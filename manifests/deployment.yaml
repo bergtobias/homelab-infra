@@ -18,5 +18,8 @@ spec:
       containers:
       - name: bergtobias
         image: docker.io/nilsdacke1/my-image-name:latest
-        ports:
+        imagePullPolicy: Always
+        ports: 
         - containerPort: 80
+   
+ 
