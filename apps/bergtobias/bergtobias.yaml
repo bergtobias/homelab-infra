@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: bergtobias
-          image: siddharth67/solar-system:v9
+          image: docker.io/nilsdacke1/my-image-name:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
