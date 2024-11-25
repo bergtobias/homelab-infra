@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
-  namespace: default # Specify the namespace
+  name: bergtobias-web
+  namespace: bergtobias # Specify the namespace
   labels:
-    app: my-app
+    app: bergtobias
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: bergtobias
   template:
     metadata:
       labels:
-        app: my-app
+        app: bergtobias
     spec:
       containers:
-      - name: my-app
+      - name: bergtobias
         image: docker.io/nilsdacke1/my-image-name:latest
         ports:
         - containerPort: 80
