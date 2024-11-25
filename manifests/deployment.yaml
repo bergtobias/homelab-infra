@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: docker.io/<your-docker-username>/my-image-name:latest
+        image: docker.io/nilsdacke1/my-image-name:latest
         ports:
         - containerPort: 80
