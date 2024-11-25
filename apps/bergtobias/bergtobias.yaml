@@ -39,7 +39,7 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: POD_NAME
+            - name: NEXT_PUBLIC_POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
