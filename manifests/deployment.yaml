@@ -1,25 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bergtobias-web
-  namespace: bergtobias # Specify the namespace
   labels:
-    app: bergtobias
+    app: solar-system
+  name: solar-system
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: bergtobias
+      app: solar-system
+  strategy: {}
   template:
     metadata:
       labels:
-        app: bergtobias
+        app: solar-system
     spec:
       containers:
-      - name: bergtobias
         image: docker.io/nilsdacke1/my-image-name:latest
+        name: solar-system
         imagePullPolicy: Always
         ports: 
         - containerPort: 80
-   
  
