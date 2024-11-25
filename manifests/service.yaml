@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: bergtobias
-  name: bergtobias-service
+    app: solar-system
+  name: solar-system-service
 spec:
   ports:
   - port: 80 #change to 80
     protocol: TCP
     targetPort: 80 #change to 80
-    nodePort: 30111
+    nodePort: 30333
   selector:
-    app: bergtobias
+    app: solar-system
   type: NodePort
