@@ -11,4 +11,4 @@ spec:
     - port: 8123 # The port the Service exposes
       targetPort: 8123 # The port your app listens on
       protocol: TCP
-      nodePort: 8123 # The fixed NodePort for external access
+      nodePort: 38123 # The fixed NodePort for external access
