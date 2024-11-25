@@ -13,22 +13,18 @@ spec:
       labels:
         app: home-assistant
     spec:
-      - port: 80
-        protocol: TCP
-        targetPort: 80
-        nodePort: 30334
-        containers:
-          - name: home-assistant
-            image: ghcr.io/home-assistant/home-assistant:stable
-            ports:
-              - containerPort: 8123
-            volumeMounts:
-              - mountPath: /config
-                name: config
-            env:
-              - name: TZ
-                value: "UTC" # Replace with your timezone
-        volumes:
-          - name: config
-            persistentVolumeClaim:
-              claimName: home-assistant-config
+      containers:
+        - name: home-assistant
+          image: ghcr.io/home-assistant/home-assistant:stable
+          ports:
+            - containerPort: 8123
+          volumeMounts:
+            - mountPath: /config
+              name: config
+          env:
+            - name: TZ
+              value: "UTC" # Replace with your timezone
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: home-assistant-config
