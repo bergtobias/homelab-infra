@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bergtobias
+  name: bergtobias-service
+  namespace: bergtobias
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+      nodePort: 30334
+  selector:
+    app: bergtobias
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bergtobias
+  name: bergtobias
+  namespace: bergtobias
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bergtobias
+  template:
+    metadata:
+      labels:
+        app: bergtobias
+    spec:
+      containers:
+        - name: bergtobias
+          image: docker.io/nilsdacke1/my-image-name:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
