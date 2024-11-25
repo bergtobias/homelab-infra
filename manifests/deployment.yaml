@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: solar-system
-  name: solar-system
+    app: bergtobias
+  name: bergtobias
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: solar-system
+      app: bergtobias
   strategy: {}
   template:
     metadata:
       labels:
-        app: solar-system
+        app: bergtobias
     spec:
       containers:
         image: docker.io/nilsdacke1/my-image-name:latest
-        name: solar-system
+        name: bergtobias
         imagePullPolicy: Always
         ports: 
         - containerPort: 80
