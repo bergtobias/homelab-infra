@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app
+  namespace: default # Specify the namespace
   labels:
     app: my-app
 spec:
@@ -16,6 +17,6 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: docker.io/nilsdacke1/my-image-name:latest
+        image: docker.io/<your-docker-username>/my-image-name:latest
         ports:
         - containerPort: 80
