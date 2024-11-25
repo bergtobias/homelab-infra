@@ -13,14 +13,6 @@ spec:
       labels:
         app: home-assistant
     spec:
-<<<<<<< HEAD
-      ports:
-        - port: 80
-          protocol: TCP
-          targetPort: 80
-          nodePort: 30334
-=======
->>>>>>> 4ac5673315a3b5a7956602628d0eb876c306cb9c
       containers:
         - name: home-assistant
           image: ghcr.io/home-assistant/home-assistant:stable
