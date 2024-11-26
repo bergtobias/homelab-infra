@@ -7,5 +7,5 @@ configMapGenerator:
     files:
       - configmap-dev.yaml
 
-patchesStrategicMerge:
+patches:
   - patch-replicas.yaml
