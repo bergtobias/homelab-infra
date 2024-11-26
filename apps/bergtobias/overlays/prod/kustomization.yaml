@@ -9,3 +9,10 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 5
+  - target:
+      kind: Service
+      name: bergtobias-service
+    patch: |-
+      - op: replace
+        path: /spec/ports[0]/nodePort
+        value: 30350
