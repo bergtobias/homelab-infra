@@ -3,12 +3,3 @@ kind: Service
 metadata:
   name: bergtobias-service
   namespace: bergtobias
-spec:
-  ports:
-    - port: 80
-      protocol: TCP
-      targetPort: 80
-      nodePort: 30334
-  selector:
-    app: bergtobias
-  type: NodePort
