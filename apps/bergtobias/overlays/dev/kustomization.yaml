@@ -1,6 +1,7 @@
 resources:
   - ../../base
 namespace: bergtobias-dev
+namePrefix: dev-
 patches:
   - target:
       group: apps
@@ -19,4 +20,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/ports/0/nodePort
-        value: 35001
+        value: 35000

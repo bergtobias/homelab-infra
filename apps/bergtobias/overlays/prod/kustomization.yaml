@@ -1,22 +1,17 @@
 resources:
   - ../../base
-
 namespace: bergtobias-prod
 namePrefix: prod-
 patches:
   - target:
-      kind: Service
-      name: your-service-name
-    patch: |
-      apiVersion: v1
-      kind: Service
-
-      spec:
-        ports:
-          - port: 80
-            targetPort: 80
-            nodePort: 30036
-        type: NodePort
+      group: apps
+      version: v1
+      kind: Deployment
+      name: bergtobias-deployment
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
   - target:
       group: apps
       version: v1
@@ -25,4 +20,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/ports/0/nodePort
-        value: 35003
+        value: 35001
