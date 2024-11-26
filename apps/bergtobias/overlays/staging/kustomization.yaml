@@ -2,17 +2,4 @@ resources:
   - ../../base
 
 patches:
-  - target:
-      kind: Deployment
-      name: bergtobias
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-  - target:
-      kind: Service
-      name: bergtobias-service
-    patch: |-
-      - op: replace
-        path: /spec/ports/0/nodePort
-        value: 30345
+  - patch.yaml
