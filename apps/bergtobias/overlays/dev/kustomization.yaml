@@ -2,21 +2,3 @@ resources:
   - ../../base
 namespace: bergtobias-dev
 namePrefix: dev-
-patches:
-  - target:s
-      group: apps
-      version: v1
-      kind: Deployment
-      name: dev-bergtobias-deployment
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 3
-  - target:
-      version: v1
-      kind: service
-      name: dev-bergtobias-service
-    patch: |-
-      - op: replace
-        path: /spec/ports/0/nodePort
-        value: 35000
