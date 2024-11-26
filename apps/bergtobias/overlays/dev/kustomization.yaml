@@ -1,7 +1,6 @@
 resources:
   - ../../base
-  - service.yaml
-patches:
+ patches:
   - target:
       group: apps
       version: v1

@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - service.yaml
 
 namespace: bergtobias-prod
 namePrefix: prod-
