@@ -3,9 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: bergtobias
-  name: bergtobias
-  namespace: bergtobias
-spec:
+  name: bergtobias-deployment
+  spec:
   replicas: 1
   selector:
     matchLabels:
@@ -21,8 +20,3 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
