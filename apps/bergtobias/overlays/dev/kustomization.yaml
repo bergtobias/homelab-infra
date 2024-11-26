@@ -1,11 +1,2 @@
 resources:
   - ../../base
-patches:
-  - path: deployment-patch.yaml
-    target:
-      kind: Deployment
-      name: bergtobias-deployment
-  - path: service-patch.yaml
-    target:
-      kind: Service
-      name: bergtobias-service
