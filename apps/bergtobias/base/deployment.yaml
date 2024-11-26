@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: bergtobias-deployment
   labels:
     app: bergtobias
-  name: bergtobias-deployment
-  spec:
+spec:
   replicas: 1
   selector:
     matchLabels:
