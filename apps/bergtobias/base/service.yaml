@@ -3,3 +3,7 @@ kind: Service
 metadata:
   name: bergtobias-service
   namespace: bergtobias
+spec:
+  selector:
+    app: bergtobias
+  type: NodePort
