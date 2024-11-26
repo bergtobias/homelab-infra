@@ -19,5 +19,5 @@ patches:
       name: bergtobias-service
     patch: |-
       - op: replace
-        path: /spec/ports/0/nodePort
-        value: 35001
+        path: /spec/ports/0
+        value:  {port: 80, protocol: TCP, targetPort: 80, nodePort: 35002}
