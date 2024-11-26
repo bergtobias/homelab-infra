@@ -1,5 +1,11 @@
 resources:
   - ../../base
-patchesStrategicMerge:
-  - deployment.yaml
-  - service.yaml
+patches:
+  - path: deployment-patch.yaml
+    target:
+      kind: Deployment
+      name: bergtobias-deployment
+  - path: service-patch.yaml
+    target:
+      kind: Service
+      name: bergtobias-service
