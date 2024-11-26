@@ -4,6 +4,10 @@ metadata:
   name: bergtobias-service
   namespace: bergtobias
 spec:
-  selector:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+   selector:
     app: bergtobias
   type: NodePort
