@@ -1,2 +1,4 @@
 resources:
   - ../../base
+namespace: bergtobias-prod
+namePrefix: prod-
