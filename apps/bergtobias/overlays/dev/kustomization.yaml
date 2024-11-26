@@ -1,6 +1,7 @@
 resources:
   - ../../base
- patches:
+namespace: bergtobias-dev
+patches:
   - target:
       group: apps
       version: v1
