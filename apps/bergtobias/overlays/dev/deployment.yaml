@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bergtobias-deployment
+spec:
+  replicas: 2 # Use 2 replicas for dev instead of 1
+  template:
+    spec:
+      containers:
+        - name: bergtobias
+          image: docker.io/nilsdacke1/my-image-name:dev-latest # Different image for dev
