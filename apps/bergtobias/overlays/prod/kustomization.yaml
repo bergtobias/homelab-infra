@@ -1,0 +1,18 @@
+resources:
+  - ../../base
+namespace: bergtobias-prod
+namePrefix: prod-
+patches:
+  - target:
+      kind: Service
+      name: your-service-name
+    patch: |
+      apiVersion: v1
+      kind: Service
+
+      spec:
+        ports:
+          - port: 80
+            targetPort: 80
+            nodePort: 30036
+        type: NodePort
