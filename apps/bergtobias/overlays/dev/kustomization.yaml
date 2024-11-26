@@ -1,0 +1,11 @@
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: bergtobias-config
+    behavior: merge
+    files:
+      - configmap-dev.yaml
+
+patchesStrategicMerge:
+  - patch-replicas.yaml
