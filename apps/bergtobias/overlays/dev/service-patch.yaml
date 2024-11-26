@@ -4,4 +4,10 @@ metadata:
   name: bergtobias-service
 spec:
   ports:
-    - nodePort: 30335 # Different nodePort for dev
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      nodePort: 30335 # You can change the nodePort if needed
+  selector:
+    app: bergtobias
+  type: NodePort
