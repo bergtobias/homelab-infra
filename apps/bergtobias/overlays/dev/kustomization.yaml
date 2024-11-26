@@ -8,4 +8,10 @@ configMapGenerator:
       - configmap-dev.yaml
 
 patches:
-  - patch-replicas.yaml
+  - target:
+      kind: Deployment
+      name: my-app
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
