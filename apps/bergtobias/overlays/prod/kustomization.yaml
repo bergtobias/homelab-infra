@@ -12,12 +12,3 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 3
-  - target:
-      group: v1
-      version: v1
-      kind: Service
-      name: bergtobias-service
-    patch: |-
-      - op: replace
-        path: /spec/ports/0
-        value:  {port: 80, protocol: TCP, targetPort: 80, nodePort: 35002}
