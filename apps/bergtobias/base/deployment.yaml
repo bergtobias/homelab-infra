@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: bergtobias
+        app: bergtobias # This label must match the selector.matchLabels above
     spec:
       containers:
         - name: bergtobias
