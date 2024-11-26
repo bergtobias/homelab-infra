@@ -2,7 +2,7 @@ resources:
   - ../../base
 
 configMapGenerator:
-  - name: bergtobias-config
+  - name: bergtobias
     behavior: merge
     files:
       - configmap-dev.yaml
