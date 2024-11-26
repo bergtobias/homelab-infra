@@ -2,3 +2,18 @@ resources:
   - ../../base
 namespace: bergtobias-staging
 namePrefix: staging-
+
+patches:
+  - target:
+      kind: Service
+      name: bergtobias-service
+    patch: |
+      apiVersion: v1
+      kind: Service
+
+      spec:
+        ports:
+          - port: 80
+            targetPort: 80
+            nodePort: 30036
+        type: NodePort
