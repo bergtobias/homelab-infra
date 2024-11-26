@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - service.yaml
 patches:
   - target:
       group: apps
@@ -10,12 +11,3 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 3
-  - target:
-      group: apps
-      version: v1
-      kind: Service
-      name: bergtobias-service
-    patch: |-
-      - op: replace
-        path: /spec/ports/0/nodePort
-        value: 30009
