@@ -2,34 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nmrih-server
-  labels:
-    app: nmrih
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nmrih
+      app: nmrih-server
   template:
     metadata:
       labels:
-        app: nmrih
+        app: nmrih-server
     spec:
       containers:
         - name: nmrih-server
           image: ghcr.io/phartenfeller/no-more-room-in-hell:latest
           ports:
             - containerPort: 27015
-              protocol: TCP
-            - containerPort: 27015
-              protocol: UDP
             - containerPort: 1200
-              protocol: TCP
             - containerPort: 27005
-              protocol: UDP
             - containerPort: 27020
-              protocol: UDP
             - containerPort: 26901
-              protocol: UDP
           env:
             - name: SRV_HOSTNAME
               value: "My Server"
@@ -37,10 +28,3 @@ spec:
               value: ""
             - name: RCON_PASSWORD
               value: "mypassword"
-          resources:
-            limits:
-              memory: "2"
-              cpu: "2000m"
-            requests:
-              memory: "2"
-              cpu: "2000m"
