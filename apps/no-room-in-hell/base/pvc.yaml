@@ -1,34 +1,25 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nmrih-game-data
+  name: nmrih-gamedata-pvc
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-
+  storageClassName: standard # Use the appropriate storage class for your cluster
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nmrih-steam-cmd
+  name: nmrih-steamcmd-pvc
+  namespace: default
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nmrih-ssh-keys
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+      storage: 5Gi
+  storageClassName: standard # Use the appropriate storage class for your cluster

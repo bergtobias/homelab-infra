@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nmrih-server
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -26,35 +27,16 @@ spec:
               protocol: UDP
           env:
             - name: NMRIH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: nmrih-token
-                  key: token
-            - name: NMRIH_USERPWD
-              valueFrom:
-                secretKeyRef:
-                  name: nmrih-userpwd
-                  key: password
-            - name: NMRIH_STARTMAP
-              value: "nmo_broadway"
-            - name: ENABLESSH
-              value: "true"
-            - name: SSHKey
-              value: "ecdsa-sha2-nistp521 AAAAE2... user1@example.com"
+              value: "BBDEFF58577AEAD47B78FD9D5CE20629"
           volumeMounts:
-            - name: game-data
+            - name: nmrih-gamedata
               mountPath: /home/nmrih/server
-            - name: steam-cmd
+            - name: nmrih-steamcmd
               mountPath: /home/nmrih/steamcmd
-            - name: ssh-keys
-              mountPath: /etc/ssh/host-keyfiles
       volumes:
-        - name: game-data
+        - name: nmrih-gamedata
           persistentVolumeClaim:
-            claimName: nmrih-game-data
-        - name: steam-cmd
+            claimName: nmrih-gamedata-pvc
+        - name: nmrih-steamcmd
           persistentVolumeClaim:
-            claimName: nmrih-steam-cmd
-        - name: ssh-keys
-          persistentVolumeClaim:
-            claimName: nmrih-ssh-keys
+            claimName: nmrih-steamcmd-pvc
