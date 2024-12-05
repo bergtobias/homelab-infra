@@ -14,6 +14,14 @@ spec:
       labels:
         app: nmrih
     spec:
+      serviceAccountName: my-service-account
+      automountServiceAccountToken: false # disable auto-mount
+      volumes:
+        - name: manual-token
+          projected:
+            sources:
+              - serviceAccountToken:
+                  path: "token"
       containers:
         - name: nmrih-server
           image: ghcr.io/phartenfeller/no-more-room-in-hell:latest
