@@ -35,8 +35,10 @@ spec:
               mountPath: /home/nmrih/steamcmd
       volumes:
         - name: nmrih-gamedata
-          persistentVolumeClaim:
-            claimName: nmrih-gamedata-pvc
+          hostPath:
+            path: /home/tobias/nmrih-gamedata-folder
+            type: Directory
         - name: nmrih-steamcmd
-          persistentVolumeClaim:
-            claimName: nmrih-steamcmd-pvc
+          hostPath:
+            path: /home/tobias/nmrih-steamcmd-folder
+            type: Directory

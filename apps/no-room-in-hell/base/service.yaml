@@ -1,26 +1,21 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nmrih-server-service
+  name: nmrih-server
   namespace: default
 spec:
-  ports:
-    - port: 27010
-      protocol: UDP
-      targetPort: 27010
-      nodePort: 30010 # You can specify the port or let Kubernetes assign one
-    - port: 27015
-      protocol: TCP
-      targetPort: 27015
-      nodePort: 30015 # NodePort for TCP
-    - port: 27015
-      protocol: UDP
-      targetPort: 27015
-      nodePort: 30015 # NodePort for UDP
-    - port: 27020
-      protocol: UDP
-      targetPort: 27020
-      nodePort: 30020 # NodePort for UDP
   selector:
     app: nmrih-server
-  type: NodePort # Expose the service as a NodePort
+  ports:
+    - protocol: UDP
+      port: 27010
+      targetPort: 27010
+    - protocol: TCP
+      port: 27015
+      targetPort: 27015
+    - protocol: UDP
+      port: 27015
+      targetPort: 27015
+    - protocol: UDP
+      port: 27020
+      targetPort: 27020
