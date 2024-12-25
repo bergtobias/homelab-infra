@@ -4,14 +4,14 @@ metadata:
   name: example-httproute
 spec:
   parentRefs:
-  - name: example-gateway
+    - name: example-gateway
   hostnames:
-  - "www.example.com"
+    - "www.example.com"
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /login
-    backendRefs:
-    - name: bergtobias-service
-      port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /login
+      backendRefs:
+        - name: bergtobias-service
+          port: 80
