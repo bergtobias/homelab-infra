@@ -1,0 +1,5 @@
+resources:
+  - namespaces
+  - application-definitions
+  - rootapplication.yaml
+
