@@ -1,5 +1,5 @@
 resources:
-  - namespaces
-  - application-definitions
+  - namespaces/namespaces.yaml
+  - application-definitions/kustomization.yaml
   - rootapplication.yaml
 
