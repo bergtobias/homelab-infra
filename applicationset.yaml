@@ -8,17 +8,17 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: https://github.com/argoproj/argo-cd.git
+        repoURL: https://github.com/bergtobias/homelab-infra
         revision: HEAD
         directories:
-          - path: applicationset/examples/git-generator-directory/cluster-addons/*
+          - path: apps/*
   template:
     metadata:
       name: "{{.path.basename}}"
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/argoproj/argo-cd.git
+        repoURL: https://github.com/bergtobias/homelab-infra
         targetRevision: HEAD
         path: "{{.path.path}}"
       destination:
