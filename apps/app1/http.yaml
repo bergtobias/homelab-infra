@@ -4,7 +4,8 @@ metadata:
   name: foo-route
 spec:
   parentRefs:
-    - name: example-gateway
+    - name: prod-web
+      port: 80
   hostnames:
     - "foo.localhost"
   rules:
