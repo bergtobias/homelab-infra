@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: main-applicationset
+  name: applicationset
 spec:
   generators:
     - git:
-        repoURL: "https://github.com/bergtobias/homelab-infras"
+        repoURL: "https://github.com/bergtobias/homelab-infra"
         revision: HEAD
         directories:
           - path: "apps/*" # This matches each directory under apps/
