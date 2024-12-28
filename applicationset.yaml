@@ -1,29 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: applicationset
+  name: cluster-addons
+  namespace: argocd
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: "https://github.com/bergtobias/homelab-infra"
+        repoURL: https://github.com/argoproj/argo-cd.git
         revision: HEAD
         directories:
-          - path: apps/*
+          - path: applicationset/examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
-      name: "{{path.basename}}" # This will resolve to app1, app2, etc.
+      name: "{{.path.basename}}"
     spec:
-      project: default
+      project: "my-project"
       source:
-        repoURL: "https://github.com/bergtobias/homelab-infra"
+        repoURL: https://github.com/argoproj/argo-cd.git
         targetRevision: HEAD
-        path: "{{path}}" # This will resolve to apps/app1, apps/app2, etc.
+        path: "{{.path.path}}"
       destination:
-        server: "https://kubernetes.default.svc"
-        namespace: "default"
+        server: https://kubernetes.default.svc
+        namespace: "{{.path.basename}}"
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
