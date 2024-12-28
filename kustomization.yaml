@@ -1,5 +1,0 @@
-resources:
-  - namespaces/kustomization.yaml
-  - application-definitions/kustomization.yaml
-  - rootapplication.yaml
-
