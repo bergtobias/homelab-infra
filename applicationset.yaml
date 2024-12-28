@@ -3,13 +3,14 @@ kind: ApplicationSet
 metadata:
   name: applicationset
 spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         revision: HEAD
-        paths:
-          - apps/*
-
+        directories:
+          - path: apps/*
   template:
     metadata:
       name: "{{path.basename}}" # This will resolve to app1, app2, etc.
