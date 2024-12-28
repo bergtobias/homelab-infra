@@ -5,10 +5,11 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: "https://github.com/bergtobias/homelab-infra"
+        repoURL: ""
         revision: HEAD
-        directories:
-          - path: "apps/*" # This matches each directory under apps/
+        paths:
+          - apps/*
+
   template:
     metadata:
       name: "{{path.basename}}" # This will resolve to app1, app2, etc.
