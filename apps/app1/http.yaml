@@ -6,7 +6,7 @@ spec:
   parentRefs:
     - name: example-gateway
   hostnames:
-    - "foo.example.com"
+    - "foo.localhost"
   rules:
     - backendRefs:
         - name: app1
