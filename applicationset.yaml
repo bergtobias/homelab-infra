@@ -8,16 +8,16 @@ spec:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         revision: HEAD
         directories:
-          - path: "apps/*"
+          - path: "apps/*" # This matches each directory under apps/
   template:
     metadata:
-      name: "{{path.basename}}"
+      name: "{{path.basename}}" # This will resolve to app1, app2, etc.
     spec:
       project: default
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: HEAD
-        path: "{{path}}"
+        path: "{{path}}" # This will resolve to apps/app1, apps/app2, etc.
       destination:
         server: "https://kubernetes.default.svc"
         namespace: "default"
