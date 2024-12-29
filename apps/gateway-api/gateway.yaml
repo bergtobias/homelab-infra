@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   name: prod-web
 spec:
-  gatewayClassName: example
+  gatewayClassName: istio
   listeners:
     - protocol: HTTP
       port: 80
