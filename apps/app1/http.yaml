@@ -5,9 +5,6 @@ metadata:
 spec:
   parentRefs:
     - name: prod-web
-  hostnames:
-    - app1.localhost
-
   rules:
     - backendRefs:
         - name: app1
