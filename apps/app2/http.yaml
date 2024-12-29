@@ -1,19 +1,19 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: HTTPRoute
 metadata:
-  name: app1-route
-  namespace: gateway-api # Adjust if necessary (use the namespace of your Gateway)
+  name: app2-route
+  namespace: gateway-api # Adjust if necessary
 spec:
   parentRefs:
     - name: istio-ingressgateway # Referencing the Gateway from above
   hosts:
-    - "app1.localhost" # Match app1 subdomain
+    - "app2.localhost" # Match app2 subdomain
   rules:
     - matches:
         - headers:
             ":authority":
               stringMatch:
-                exact: "app1.localhost"
+                exact: "app2.localhost"
       backendRefs:
-        - name: app1 # Referencing the app1 service
+        - name: app2 # Referencing the app2 service
           port: 80
