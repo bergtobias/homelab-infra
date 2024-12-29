@@ -1,5 +1,0 @@
-kind: GatewayClass
-metadata:
-  name: cluster-gateway
-spec:
-  controllerName: "example.net/gateway-controller"
