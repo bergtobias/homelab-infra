@@ -10,4 +10,7 @@ spec:
       name: prod-web-gw
       allowedRoutes:
         namespaces:
-          from: Same
+          from: Selector
+          selector:
+            matchLabels:
+              shared-gateway-access: "true"
