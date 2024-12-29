@@ -11,4 +11,4 @@ spec:
   rules:
     - backendRefs:
         - name: app1
-          port: 8080
+          port: 80
