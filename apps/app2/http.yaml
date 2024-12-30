@@ -5,7 +5,7 @@ metadata:
 spec:
   parentRefs:
     - namespace: default
-    - name: gateway
+      name: gateway
 
   hostnames:
     - "app2.localhost"
