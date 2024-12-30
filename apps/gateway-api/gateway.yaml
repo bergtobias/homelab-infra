@@ -12,3 +12,9 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - protocol: HTTPS
+      port: 443
+      name: https
+      tls:
+        mode: SIMPLE
+        credentialName: wild-card-tls
