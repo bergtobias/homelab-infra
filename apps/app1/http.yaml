@@ -5,6 +5,8 @@ metadata:
 spec:
   parentRefs:
     - name: gateway
+  hostnames:
+    - "foo.localhost"
   rules:
     - backendRefs:
         - name: app1
