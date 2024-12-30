@@ -13,4 +13,4 @@ spec:
           from: Selector
           selector:
             matchLabels:
-              kubernetes.io/metadata.name: desmond
+              kubernetes.io/metadata.name: default
