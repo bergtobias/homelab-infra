@@ -6,7 +6,7 @@ spec:
   parentRefs:
     - namespace: default
     - name: gateway
-    -
+
   hostnames:
     - "app2.localhost"
   rules:
