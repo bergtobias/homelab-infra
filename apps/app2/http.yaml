@@ -4,7 +4,9 @@ metadata:
   name: app2-http
 spec:
   parentRefs:
+    - namespace: default
     - name: gateway
+    -
   hostnames:
     - "app2.localhost"
   rules:
