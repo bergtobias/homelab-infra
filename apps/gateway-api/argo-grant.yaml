@@ -1,0 +1,13 @@
+kind: ReferenceGrant
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: test-grant
+  namespace: argocd
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: default
+  to:
+    - group: ""
+      kind: Service
