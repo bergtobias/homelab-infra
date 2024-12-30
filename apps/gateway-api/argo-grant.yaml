@@ -1,16 +1,13 @@
-apiVersion: authorization.gateway.networking.k8s.io/v1alpha1
 kind: ReferenceGrant
+apiVersion: gateway.networking.k8s.io/v1beta1
 metadata:
-  name: allow-argo-server-access
-  namespace: gateway-api
+  name: test-grant
+  namespace: argocd
 spec:
-  grant:
-    from:
-      namespaces:
-        - gateway-api
-    to:
-      resources:
-        - kind: Service
-          name: argocd-server
-      namespaces:
-        - argocd
+  from:
+    - group: gateway.networking.k8s.io
+      kind: HTTPRoute
+      namespace: gateway-api
+  to:
+    - group: ""
+      kind: Service
