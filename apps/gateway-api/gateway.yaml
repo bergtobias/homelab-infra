@@ -10,7 +10,4 @@ spec:
       name: http
       allowedRoutes:
         namespaces:
-          from: Selector
-          selector:
-            matchLabels:
-              kubernetes.io/metadata.name: default
+          from: All
