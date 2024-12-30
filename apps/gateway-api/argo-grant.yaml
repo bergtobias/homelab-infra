@@ -6,8 +6,8 @@ spec:
   from:
     - group: gateway.networking.k8s.io
       kind: HTTPRoute
-      namespace: default
+      namespace: gateway-api
   to:
-    - kind: Service
-      name: argocd-server
+    - group: ""
+      kind: Service
       namespace: argocd
