@@ -11,5 +11,5 @@ spec:
     - "app2.localhost"
   rules:
     - backendRefs:
-        - name: app2
+        - name: app22
           port: 80

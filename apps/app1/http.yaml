@@ -11,6 +11,7 @@ spec:
   rules:
     - backendRefs:
         - name: app1
+          namespace: app1
           port: 80
           weight: 50
         - name: app2
