@@ -12,3 +12,7 @@ spec:
     - backendRefs:
         - name: app1
           port: 80
+          weight: 50
+        - name: app2
+          port: 80
+          weight: 50
