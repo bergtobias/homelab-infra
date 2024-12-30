@@ -13,7 +13,6 @@ spec:
         namespaces:
           from: All
     - name: https
-      hostname: "httpbin.example.com"
       port: 443
       protocol: HTTPS
       tls:
@@ -23,7 +22,4 @@ spec:
             namespace: istio-system
       allowedRoutes:
         namespaces:
-          from: Selector
-          selector:
-            matchLabels:
-              kubernetes.io/metadata.name: default
+          from: All
