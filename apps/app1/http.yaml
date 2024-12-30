@@ -5,6 +5,7 @@ metadata:
 spec:
   parentRefs:
     - name: gateway
+      namespace: default
   hostnames:
     - "app1.localhost"
   rules:
