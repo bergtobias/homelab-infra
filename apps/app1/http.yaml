@@ -4,7 +4,7 @@ metadata:
   name: app1
 spec:
   parentRefs:
-    - name: prod-web
+    - name: gateway
   rules:
     - backendRefs:
         - name: app1
