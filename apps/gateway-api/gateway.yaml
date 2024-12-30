@@ -12,6 +12,5 @@ spec:
         namespaces:
           from: Selector
           selector:
-            matchExpressions:
-              - key: kubernetes.io/metadata.name
-                operator: Exists
+            matchLabels:
+              kubernetes.io/metadata.name: desmond
