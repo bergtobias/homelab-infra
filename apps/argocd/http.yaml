@@ -8,9 +8,9 @@ spec:
     - name: gateway
       namespace: default
   hostnames:
-    - "argo.localhost"
+    - "argo-web.localhost"
   rules:
     - backendRefs:
         - name: argocd-server
           namespace: argocd
-          port: 2764
+          port: 80
