@@ -257,6 +257,24 @@ spec:
       targetPort: 8000
   selector:
     k8s-app: dashboard-metrics-scraper
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: dashboard-http
+  namespace: kubernetes-dashboard
+
+spec:
+  parentRefs:
+    - name: gateway
+      namespace: default
+  hostnames:
+    - "dashboard.localhost"
+  rules:
+    - backendRefs:
+        - name: kubernetes-dashboard
+          namespace: kubernetes-dashboard
+          port: 80
 
 ---
 kind: Deployment
