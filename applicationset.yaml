@@ -12,6 +12,7 @@ spec:
         revision: HEAD
         directories:
           - path: apps/*
+    - helm:
   template:
     metadata:
       name: "{{.path.basename}}"
