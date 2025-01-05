@@ -12,10 +12,13 @@ spec:
     - host: argocd.bergtobias.com
       http:
         paths:
-          - backend:
-              serviceName: argocd-server
-              servicePort: https
-            path: /
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: https
   tls:
     - hosts:
         - argocd.bergtobias.com
