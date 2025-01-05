@@ -5,10 +5,10 @@ metadata:
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.middlewares: argocd-https-redirect@kubernetescrd
 spec:
   rules:
-    - host: argocd.bergtobias.com # Replace with the domain or IP you want
+    - host: argocd.bergtobias.com
       http:
         paths:
           - path: /
