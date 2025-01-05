@@ -12,14 +12,3 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - name: https
-      port: 443
-      protocol: HTTPS
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: wild-card-tls
-            namespace: istio-system
-      allowedRoutes:
-        namespaces:
-          from: All
