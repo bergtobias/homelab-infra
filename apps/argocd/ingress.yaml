@@ -8,7 +8,7 @@ metadata:
 spec:
   rules:
     - host: argo-web.bergtobias.com
-      http:
+      https:
         paths:
           - path: /
             pathType: Prefix
