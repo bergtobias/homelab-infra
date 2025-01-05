@@ -1,18 +1,14 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: argocd-server-http
+  name: argocd
   namespace: argocd
 spec:
-  ingressClassName: traefik
-  rules:
-    - host: argo-web.bergtobias
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  name: https
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`argocd.local`)
+      kind: Rule
+      services:
+        - name: argocd-server
+          port: 80
