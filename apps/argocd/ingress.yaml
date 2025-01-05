@@ -11,8 +11,7 @@ spec:
           - backend:
               serviceName: argocd-server
               servicePort: https
-            path: /
-  tls:
+   tls:
     - hosts:
         - argocd.bergtobias.com
       secretName: argocd-secret # do not change, this is provided by Argo CD
