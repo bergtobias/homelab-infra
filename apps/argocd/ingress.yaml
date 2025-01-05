@@ -5,18 +5,17 @@ metadata:
   namespace: argocd
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: argocd-https-redirect@kubernetescrd
-    traefik.ingress.kubernetes.io/router.tls: "true" # If using TLS
-    traefik.ingress.kubernetes.io/router.tls.certresolver: le # If using Let's Encrypt for certs
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: le # Use Let's Encrypt resolver
 spec:
   rules:
-    - host: argocd.bergtobias.com # Use your domain or IP address here
+    - host: argocd.bergtobias.com # Your domain
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: argocd-server
+                name: argocd-server # Ensure the service name matches the actual service
                 port:
-                  number: 80 # Ensure this is the correct port
+                  number: 80 # Ensure the correct port
