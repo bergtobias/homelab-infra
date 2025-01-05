@@ -4,10 +4,10 @@ metadata:
   name: argocd
   namespace: argocd
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
   rules:
-    - host: argo.bergtobias.com # Replace with your domain name
+    - host: argo.bergtobias.com
       http:
         paths:
           - path: /
@@ -16,4 +16,4 @@ spec:
               service:
                 name: argocd-server
                 port:
-                  number: 80 # HTTP port for ArgoCD
+                  number: 80
