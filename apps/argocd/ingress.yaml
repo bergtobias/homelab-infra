@@ -4,8 +4,6 @@ metadata:
   name: argocd
   namespace: argocd
   annotations:
-    # This annotation tells the ingress controller to route traffic for argo.bergtobias.com
-    # and also indicates it should handle HTTPS
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
 spec:
   rules:
@@ -19,8 +17,4 @@ spec:
                 name: argocd-server
                 port:
                   number: 80 # HTTP port for ArgoCD
-  # Enable TLS if your ingress controller is configured to handle HTTPS
-  tls:
-    - hosts:
-        - argo.bergtobias.com # Replace with your domain
-      secretName: argo-tls-secret # The secret with your TLS certificate (if needed)
+
