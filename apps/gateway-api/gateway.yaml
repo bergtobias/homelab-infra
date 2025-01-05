@@ -10,7 +10,7 @@ spec:
       port: 80
       name: http
       hosts:
-        - "bergtobias.com"
+        - "*"
       allowedRoutes:
         namespaces:
           from: All
