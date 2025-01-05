@@ -19,3 +19,8 @@ spec:
                 name: argocd-server
                 port:
                   name: https
+  tls:
+    - hosts:
+        - argocd.bergtobias.com
+      secretName: k3s-serving
+      namespace: kube-system
