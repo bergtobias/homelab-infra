@@ -7,14 +7,9 @@ spec:
     - name: gateway
       namespace: default
   hostnames:
-    - "app1.bergotobias.com"
+    - "bergotobias.com"
   rules:
     - backendRefs:
         - name: app1
           namespace: app1
           port: 80
-          weight: 50
-        - name: app2
-          namespace: app2
-          port: 80
-          weight: 50
