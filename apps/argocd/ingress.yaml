@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   name: argocd-server-ingress
   namespace: argocd
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
   - host: argocd.example.com
@@ -20,5 +17,5 @@ spec:
               number: 443
   tls:
    - hosts:
-       - argocd.bergtobias.com
+       - argocd.example.com
     secretName: argocd-secret # do not change, this is provided by Argo CD
