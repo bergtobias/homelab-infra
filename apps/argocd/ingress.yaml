@@ -2,12 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-server-http
-  annotations:
-    kubernetes.io/ingress.class: contour-internal
-    ingress.kubernetes.io/force-ssl-redirect: "true"
+  namespace: argocd
 spec:
+  ingressClassName: traefik
   rules:
-    - host: argo.bergtobias.com
+    - host: argo-web.bergtobias
       http:
         paths:
           - path: /
@@ -16,4 +15,4 @@ spec:
               service:
                 name: argocd-server
                 port:
-                  name: http
+                  name: https
