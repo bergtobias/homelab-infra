@@ -8,7 +8,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.priority: "10"
 spec:
   rules:
-    - host: argocd.local # Replace with the domain or IP you want
+    - host: argocd.bergtobias.com # Replace with the domain or IP you want
       http:
         paths:
           - path: /
