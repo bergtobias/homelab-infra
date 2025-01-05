@@ -4,6 +4,7 @@ metadata:
   name: argocd-server-http
   namespace: argocd
 spec:
+  ingressClassName: traefik
   rules:
     - host: argo-web.bergtobias
       http:
