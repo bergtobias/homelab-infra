@@ -5,7 +5,7 @@ metadata:
   namespace: app1
 spec:
   rules:
-    - host: bergtobias.com
+    - host: omg.bergtobias.com
       http:
         paths:
           - path: /
