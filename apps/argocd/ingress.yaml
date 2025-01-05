@@ -1,14 +1,19 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: argocd
-  namespace: argocd
+  name: argocd-server-http
+  annotations:
+    kubernetes.io/ingress.class: contour-internal
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
-  entryPoints:
-    - web # Use only HTTP (port 80)
-  routes:
-    - match: Host(`argo.bergtobias.com`) # Replace with your domain
-      kind: Rule
-      services:
-        - name: argocd-server
-          port: 443 # ArgoCD's default HTTP service port
+  rules:
+    - host: argo.bergtobias.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: http
