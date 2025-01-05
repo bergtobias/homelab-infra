@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: app2.bergotobias.com
+    - host: app2.bergtobias.com
       http:
         paths:
           - path: /
