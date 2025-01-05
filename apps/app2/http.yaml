@@ -8,7 +8,7 @@ spec:
       name: gateway
 
   hostnames:
-    - "app2.localhost"
+    - "app2.bergotobias.com"
   rules:
     - backendRefs:
         - name: app22

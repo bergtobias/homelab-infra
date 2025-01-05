@@ -267,7 +267,7 @@ spec:
     - name: gateway
       namespace: default
   hostnames:
-    - "dashboard.localhost"
+    - "dashboard.bergotobias.com"
   rules:
     - backendRefs:
         - name: kubernetes-dashboard

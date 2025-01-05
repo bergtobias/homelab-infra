@@ -7,7 +7,7 @@ spec:
     - name: gateway
       namespace: default
   hostnames:
-    - "app1.localhost"
+    - "app1.bergotobias.com"
   rules:
     - backendRefs:
         - name: app1
