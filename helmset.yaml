@@ -20,12 +20,11 @@ spec:
             revision: v1.14.4
             namespace: cert-manager
             postInstall: false
-
   template:
     metadata:
       name: "{{.name}}"
       annotations:
-        argocd.argoproj.io/sync-wave: "1"
+        argocd.argoproj.io/sync-wave: "{{if .postInstall}}2{{else}}1{{end}}"
     spec:
       syncPolicy:
         automated: {}
@@ -35,12 +34,12 @@ spec:
         namespace: "{{.namespace}}"
         server: https://kubernetes.default.svc
       project: default
-  source:
-    repoURL: "{{.repo}}"
-    chart: "{{.chart}}"
-    targetRevision: "{{.revision}}"
-    helm:
-      releaseName: "{{.name}}"
-      parameters:
-        - name: key
-          value: value
+      source:
+        repoURL: "{{.repo}}"
+        chart: "{{.chart}}"
+        targetRevision: "{{.revision}}"
+        helm:
+          releaseName: "{{.name}}"
+          parameters:
+            - name: exampleKey
+              value: exampleValue
