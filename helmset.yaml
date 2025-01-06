@@ -35,3 +35,12 @@ spec:
         namespace: "{{.namespace}}"
         server: https://kubernetes.default.svc
       project: default
+  source:
+    repoURL: "{{.repo}}"
+    chart: "{{.chart}}"
+    targetRevision: "{{.revision}}"
+    helm:
+      releaseName: "{{.name}}"
+      parameters:
+        - name: key
+          value: value
