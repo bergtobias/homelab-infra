@@ -6,14 +6,16 @@ metadata:
 spec:
   goTemplate: true
   generators:
-    - git:
-        repoURL: https://github.com/your-repo/helm-charts.git
-        revision: HEAD
-        directories:
-          - path: "charts/*"
+    - list:
+        elements:
+          - name: istio
+            chart: base
+            repoURL: https://istio-release.storage.googleapis.com/charts
+            targetRevision: 1
+            namespace: istio-system
   template:
     metadata:
-      name: "{{.path.basename}}"
+      name: "{{.name}}"
       annotations:
         argocd.argoproj.io/sync-wave: "1"
     spec:
@@ -22,28 +24,18 @@ spec:
         syncOptions:
           - CreateNamespace=true
       destination:
-        namespace: "{{.path.basename}}-namespace"
+        namespace: "{{.namespace}}"
         server: https://kubernetes.default.svc
       project: default
       sources:
-        - repoURL: "https://github.com/your-repo/helm-charts.git"
-          chart: "{{ .path.basename }}"
-          targetRevision: HEAD
-          helm:
-            valueFiles:
-              - $values/helm/{{ .path.basename }}/values.yaml
+        # 1. Online Helm Chart
+        - repoURL: "{{ .repoURL }}"
+          chart: "{{ .chart }}"
+          targetRevision: "{{ .targetRevision }}"
+        # 2. Git Repository with `values.yaml`
         - repoURL: https://github.com/bergtobias/homelab-infra.git
           targetRevision: HEAD
-          ref: values
-  templatePatch: |
-    spec:
-      sources:
-        - repoURL: '{{ .repo }}'
-          chart: '{{ .chart }}'
-          targetRevision: '{{ .revision }}'
-          helm:
-            valueFiles:
-              - $values/helm/{{ .name }}/values.yaml
-        - repoURL: https://github.com/bergtobias/homelab-infra.git
-          targetRevision: HEAD
-          ref: values
+          path: helm/{{ .name }}
+      helm:
+        valueFiles:
+          - "values.yaml" # Pull this from the Git repo source
