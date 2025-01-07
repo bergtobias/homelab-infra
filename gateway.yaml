@@ -12,7 +12,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-    - protocol: TLS
+    - protocol: HTTPS
       port: 443
       name: prod-tls-gw
       allowedRoutes:
