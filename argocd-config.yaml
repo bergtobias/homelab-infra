@@ -1,9 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  labels:
-    app.kubernetes.io/name: argocd-cm
-    app.kubernetes.io/part-of: argocd
   name: argocd-cm
+  namespace: argocd
 data:
-  server.rootUrl: https://argocd.bergtobias.com
+  # Tvinga ArgoCD-server att gå i insecure mode (ingen egen TLS)
+  server.insecure: "true"
+
+  # Tala om för ArgoCD vilken URL den kör på
+  # (detta hjälper till att slippa felaktiga redirect-loopar)
+  url: "https://argocd.bergtobias.com"
