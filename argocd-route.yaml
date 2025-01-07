@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: istio-system
-      sectionName: prod-tls-gw # or the name of the HTTPS listener
+      sectionName: prod-web-gw # or the name of the HTTPS listener
   hostnames:
     - "argocd.bergtobias.com"
   rules:
