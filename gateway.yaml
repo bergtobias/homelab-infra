@@ -12,3 +12,9 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - protocol: TLS
+      port: 80
+      name: prod-tls-gw
+      allowedRoutes:
+        namespaces:
+          from: All
