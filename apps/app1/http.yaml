@@ -12,7 +12,3 @@ spec:
     - backendRefs:
         - name: app1
           port: 80
-  tls:
-    - hosts:
-        - app.bergtobias.com
-      secretName: argocd-secret
