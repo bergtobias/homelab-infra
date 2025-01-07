@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.7.1
-    chart: ingress-nginx
+    repoURL: https://github.com/bergtobias/homelab-infra
+    targetRevision: main
+    path: helm/nginx-ingress
     helm:
       valueFiles:
-        - helm/nginx-ingress/values.yaml
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
