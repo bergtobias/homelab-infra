@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio
+  name: istiod
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: base-1.12.3 # Replace with your desired Istio version
-    chart: istio
+    targetRevision: 1.24.2 # Correct version for the chart
+    chart: istiod # Correct chart name for Istio control plane
     helm:
       valueFiles:
-        - values.yaml # Optional: Use if you want to override default values
+        - values.yaml # Optional: Add if you are overriding default values
   destination:
     server: https://kubernetes.default.svc
-    namespace: istio-system # The namespace where Istio will be deployed
+    namespace: istio-system # Namespace where Istio will be deployed
   syncPolicy:
     automated:
       prune: true
