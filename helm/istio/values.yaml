@@ -1,12 +1,8 @@
 global:
   istioNamespace: istio-system
-  proxy:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128Mi
-      limits:
-        cpu: 200m
-        memory: 256Mi
 pilot:
   autoscaleEnabled: true
+ingressGateways:
+  enabled: true
+egressGateways:
+  enabled: false

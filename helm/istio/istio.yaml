@@ -7,11 +7,11 @@ spec:
   project: default
   source:
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.2 # Replace with the desired Istio version
+    targetRevision: 1.18.2 # Replace with desired Istio version
     chart: base
     helm:
       valueFiles:
-        - helm/istio/values.yaml # Reference custom values file if needed
+        - values.yaml # Reference custom values file in your repo
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
