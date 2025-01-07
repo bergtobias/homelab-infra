@@ -8,7 +8,16 @@ spec:
   listeners:
     - protocol: HTTP
       port: 80
-      name: prod-web-gw
+      name: http-prod-web-gw
+      allowedRoutes:
+        namespaces:
+          from: All
+    - protocol: HTTPS
+      port: 443
+      name: https-prod-web-gw
+      tls:
+        mode: SIMPLE
+        credentialName: istio-ingress-cert # Replace with your certificate's secret name
       allowedRoutes:
         namespaces:
           from: All
