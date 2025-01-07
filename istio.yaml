@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.18.2 # Replace with your desired Istio version
+    chart: istio
+    helm:
+      valueFiles:
+        - values.yaml # Optional if you want to override default values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system # The namespace where Istio will be deployed
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
