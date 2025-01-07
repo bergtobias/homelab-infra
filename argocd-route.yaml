@@ -1,5 +1,5 @@
 apiVersion: gateway.networking.k8s.io/v1
-kind: httpRoute
+kind: HTTPRoute
 metadata:
   name: argocd-route
   namespace: argocd
