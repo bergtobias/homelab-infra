@@ -6,16 +6,14 @@ metadata:
 spec:
   goTemplate: true
   generators:
-    - list:
-        elements:
-          - name: istio
-            chart: base
-            repoURL: https://istio-release.storage.googleapis.com/charts
-            targetRevision: 1
-            namespace: istio-system
+    - git:
+        repoURL: https://github.com/your-repo/helm-charts.git
+        revision: HEAD
+        directories:
+          - path: "charts/*"
   template:
     metadata:
-      name: "{{.name}}"
+      name: "{{.path.basename}}"
       annotations:
         argocd.argoproj.io/sync-wave: "1"
     spec:
@@ -24,9 +22,19 @@ spec:
         syncOptions:
           - CreateNamespace=true
       destination:
-        namespace: "{{.namespace}}"
+        namespace: "{{.path.basename}}-namespace"
         server: https://kubernetes.default.svc
       project: default
+      sources:
+        - repoURL: "https://github.com/your-repo/helm-charts.git"
+          chart: "{{ .path.basename }}"
+          targetRevision: HEAD
+          helm:
+            valueFiles:
+              - $values/helm/{{ .path.basename }}/values.yaml
+        - repoURL: https://github.com/bergtobias/homelab-infra.git
+          targetRevision: HEAD
+          ref: values
   templatePatch: |
     spec:
       sources:
