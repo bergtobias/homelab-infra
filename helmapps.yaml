@@ -1,33 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: helm-apps
+  name: istio
   namespace: argocd
 spec:
-  generators:
-    - git:
-        repoURL: https://github.com/bergtobias/homelab-infra
-        revision: main
-        directories:
-          - path: helm/*
-  template:
-    metadata:
-      name: "{{path.basename}}"
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/bergtobias/homelab-infra
-        targetRevision: main
-        path: "{{path}}"
-        helm:
-          valueFiles:
-            - values.yaml # Assumes each Helm app has a `values.yaml`
-        directory:
-          recurse: true
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: "{{path.basename}}"
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+  project: default
+  source:
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.18.2 # Replace with the desired Istio version
+    chart: base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
