@@ -5,7 +5,8 @@ metadata:
 spec:
   parentRefs:
     - name: gateway
+      namespace: istio-system
   rules:
     - backendRefs:
-        - name: app1-svc
+        - name: app1
           port: 80
