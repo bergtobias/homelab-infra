@@ -13,5 +13,5 @@ spec:
   rules:
     - backendRefs:
         - name: argocd-server # The name of your ArgoCD service
-          port: 80 # Or 443 if you’re re-encrypting, etc.
+          port: 443 # Or 443 if you’re re-encrypting, etc.
       # etc.
