@@ -11,7 +11,7 @@ spec:
     chart: istio
     helm:
       valueFiles:
-        - values.yaml # Optional if you want to override default values
+        - values.yaml # Optional: Use if you want to override default values
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system # The namespace where Istio will be deployed
