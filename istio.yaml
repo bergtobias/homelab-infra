@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.2 # Replace with your desired Istio version
+    targetRevision: charts/base-1.12.3 # Replace with your desired Istio version
     chart: istio
     helm:
       valueFiles:
