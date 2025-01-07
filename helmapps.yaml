@@ -1,23 +1,35 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: istio
+  name: helm-charts
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://istio-release.storage.googleapis.com/charts
-    targetRevision: 1.18.2 # Replace with the desired Istio version
-    chart: base
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: istio-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: istio-system
+  generators:
+    - list:
+        elements:
+          - name: istio
+            chart: base
+            repoURL: https://istio-release.storage.googleapis.com/charts
+            targetRevision: 1.18.2
+            namespace: istio-system
+            valuesFile: helm/istio/values.yaml
+  template:
+    metadata:
+      name: "{{name}}"
+    spec:
+      project: default
+      source:
+        repoURL: "{{repoURL}}"
+        targetRevision: "{{targetRevision}}"
+        chart: "{{chart}}"
+        helm:
+          valueFiles:
+            - "{{valuesFile}}"
+      destination:
+        namespace: "{{namespace}}"
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      createNamespace: true
