@@ -7,10 +7,9 @@ spec:
   parentRefs:
     - name: gateway
       namespace: istio-system
-      sectionName: prod-tls-gw
   hostnames:
     - argocd.bergtobias.com
   rules:
     - backendRefs:
         - name: argocd-server
-          port: 443
+          port: 80
