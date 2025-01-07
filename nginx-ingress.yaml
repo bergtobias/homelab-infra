@@ -11,7 +11,7 @@ spec:
     path: helm/nginx-ingress
     helm:
       valueFiles:
-        - values.yaml
+        - https://github.com/bergtobias/homelab-infra/helm/ingress-nginx/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
