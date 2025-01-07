@@ -5,8 +5,8 @@ metadata:
   namespace: app1
 spec:
   parentRefs:
-    - name: app1-gateway
-    - namespace: ingressgateway
+    - name: istio-ingressgateway
+    - namespace: istio-system
   hostnames:
     - app.bergtobias.com
   rules:
