@@ -12,3 +12,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - protocol: HTTPS
+      port: 443
+      name: prod-web-gw-ssl
+      tls:
+        mode: SIMPLE
+        credentialName: istio-ingress-cert
+      allowedRoutes:
+        namespaces:
+          from: All
