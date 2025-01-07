@@ -8,8 +8,10 @@ spec:
   source:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.24.2 # Correct version for the chart
-    chart: istiod # Correct chart name for Istio control plane
-
+    chart: istio # Correct chart name for Istio control plane
+    helm:
+      valueFiles:
+        - values.yaml # Optional: Add if you are overriding default values
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system # Namespace where Istio will be deployed
