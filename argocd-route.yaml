@@ -7,7 +7,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: istio-system
-      sectionName: https # or the name of the HTTPS listener
+      sectionName: http # or the name of the HTTPS listener
   hostnames:
     - "argocd.bergtobias.com"
   rules:
