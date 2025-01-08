@@ -7,6 +7,7 @@ spec:
   gatewayClassName: istio
   listeners:
     - protocol: HTTP
+      hostname: "argocd.bergtobias.com"
       port: 80
       name: prod-web-gw
       allowedRoutes:
