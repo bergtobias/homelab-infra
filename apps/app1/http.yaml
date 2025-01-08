@@ -6,6 +6,7 @@ spec:
   parentRefs:
     - name: gateway
       namespace: istio-system
+      sectionName: prod-web-gw
   hostnames:
     - app.bergtobias.com
   rules:
