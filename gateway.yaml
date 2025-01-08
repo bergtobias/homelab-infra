@@ -12,3 +12,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - protocol: https
+      port: 443
+      name: prod-wtls-gw
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: SIMPLE
+        credentialName: istio-ingress-cert
