@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   parentRefs:
-    - name: gateway
+    - name: prod-web
       namespace: istio-system
   hostnames:
     - "argocd.bergtobias.com"
