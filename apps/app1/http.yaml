@@ -5,7 +5,7 @@ metadata:
   namespace: app1
 spec:
   parentRefs:
-    - name: prod-web
+    - name: prod-web-1
       namespace: istio-system
   hostnames:
     - app.bergtobias.com
