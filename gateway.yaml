@@ -19,5 +19,5 @@ spec:
         namespaces:
           from: All
       tls:
-        mode: SIMPLE
+        mode: Terminate
         credentialName: istio-ingress-cert
