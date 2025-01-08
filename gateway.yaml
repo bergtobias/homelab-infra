@@ -16,7 +16,7 @@ spec:
     - protocol: HTTP
       hostname: "app.bergtobias.com"
       port: 80
-      name: prod-web-gw
+      name: prod-tls-gw
       allowedRoutes:
         namespaces:
           from: All
