@@ -6,8 +6,8 @@ metadata:
 spec:
   gatewayClassName: istio
   listeners:
-    - protocol: https
-      port: 443
+    - protocol: http
+      port: 80
       name: prod-web-gw
       allowedRoutes:
         namespaces:
