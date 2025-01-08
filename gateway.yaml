@@ -20,4 +20,4 @@ spec:
           from: All
       tls:
         mode: Terminate
-        credentialName: istio-ingress-cert
+        certificateRefs: istio-ingress-cert
