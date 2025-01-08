@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway-argo
+  namespace: istio-system
+spec:
+  gatewayClassName: istio
+  listeners:
+    - protocol: https
+      port: 443
+      name: prod-argo
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: istio-ingress-cert
