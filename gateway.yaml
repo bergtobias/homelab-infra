@@ -6,11 +6,11 @@ metadata:
 spec:
   gatewayClassName: istio
   listeners:
-    - protocol: HTTPS # Other possible value is `TLS`
-      name: prod-tls-gw
+    - name: wildcard-https
+      protocol: HTTPS
       port: 443
+      hostname: "*.bergtobias.com"
       tls:
-        mode: Terminate # If protocol is `TLS`, `Passthrough` is a possible mode
         certificateRefs:
           - kind: Secret
             group: ""
