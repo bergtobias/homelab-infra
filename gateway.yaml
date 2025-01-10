@@ -13,6 +13,7 @@ spec:
         namespaces:
           from: All
     - protocol: HTTPS # Other possible value is `TLS`
+      name: prod-tls-gw
       port: 443
       tls:
         mode: Terminate # If protocol is `TLS`, `Passthrough` is a possible mode
