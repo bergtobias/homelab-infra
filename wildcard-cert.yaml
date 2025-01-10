@@ -9,5 +9,5 @@ spec:
     - "*.bergtobias.com" # The wildcard
     - bergtobias.com # (Optional) often recommended so naked domain also works
   issuerRef:
-    name: letsencrypt-production
+    name: letsencrypt-production-2
     kind: ClusterIssuer
