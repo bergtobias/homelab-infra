@@ -10,9 +10,7 @@ spec:
   source:
     repoURL: "https://github.com/bergtobias/homelab-infra"
     targetRevision: main
-    path: apps # Points to the folder with child kustomizations or Helm charts
-    directory:
-      recurse: true # Ensure ArgoCD scans sub-folders
+    path: . # Points to the folder with child kustomizations or Helm charts
 
   destination:
     server: "https://kubernetes.default.svc"
