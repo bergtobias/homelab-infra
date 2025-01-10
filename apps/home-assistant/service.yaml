@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+  labels:
+    app: home-assistant
+spec:
+  # Change this to NodePort or LoadBalancer if you want external access:
+  # type: NodePort
+  # type: LoadBalancer
+  type: ClusterIP
+  selector:
+    app: home-assistant
+  ports:
+    - name: http
+      port: 8123
+      targetPort: 8123
