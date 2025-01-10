@@ -1,15 +1,20 @@
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
-  annotations:
-  name: gateway
+  name: istio-gateway
   namespace: istio-system
+  annotations:
+    cert-manager.io/issuer: "letsencrypt-prod"
 spec:
   gatewayClassName: istio
   listeners:
-    - protocol: HTTP
-      port: 80
-      name: prod-web-gw
+    - name: https
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        options:
+          cert-manager.io/issuer-kind: "ClusterIssuer"
       allowedRoutes:
         namespaces:
           from: All
