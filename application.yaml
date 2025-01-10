@@ -29,6 +29,7 @@ spec:
         # Use the folder’s name as the namespace (optional).
         # You can override with a static name or logic.
         namespace: "{{path.basename}}"
+        createNamespace: true
 
       # Auto-sync config (optional)
       syncPolicy:
