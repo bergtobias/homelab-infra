@@ -3,10 +3,12 @@ kind: Certificate
 metadata:
   name: istio-cert
   namespace: istio-system
+  labels:
+    app.kubernetes.io/instance: root-app
 spec:
   secretName: istio-gateway-tls
   issuerRef:
-    name: letsencrypt-prod
     kind: ClusterIssuer
+    name: letsencrypt-prod
   dnsNames:
     - bergtobias.com
