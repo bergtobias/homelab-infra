@@ -1,13 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: tls
-  namespace: default
+  name: argo-tls
+  namespace: argocd
 spec:
-  secretName: tls
+  secretName: argocd-tls
   dnsNames:
-    - "*.bergtobias.com"
-    - "bergtobias.com"
+    - argo.bergtobias.com
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
