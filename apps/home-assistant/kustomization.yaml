@@ -6,6 +6,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - pvc.yaml
+  - http.yaml
 # If you need to customize images, common labels, etc., you can do that here
 # commonLabels:
 #   app: home-assistant
