@@ -2,35 +2,26 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: apps
-  namespace: argocd # Ensure this matches your Argo CD namespace
+  namespace: argocd
 spec:
   generators:
     - git:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         revision: main
         directories:
-          - path: "apps/*" # This tells the generator to look in 'apps/' for subfolders
+          - path: "apps/*"
   template:
     metadata:
-      # Use the folder’s name as the Application name (e.g., 'istio', 'cert-manager', etc.)
       name: "{{path.basename}}"
     spec:
       project: default
-
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: main
-        # Each generated Application uses the subfolder path, e.g., apps/istio, apps/cert-manager
         path: "{{path}}"
-
-      # Where to deploy
       destination:
         server: "https://kubernetes.default.svc"
-        # Use the folder’s name as the namespace (optional).
-        # You can override with a static name or logic.
         namespace: "{{path.basename}}"
-
-      # Auto-sync config (optional)
       syncPolicy:
         automated:
           prune: true
