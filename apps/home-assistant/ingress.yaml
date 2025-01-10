@@ -10,8 +10,8 @@ metadata:
 spec:
   tls:
     - hosts:
-        - argo.bergtobias.com # Your domain name
-      secretName: home-assistant-tls # Secret created by Cert-Manager
+        - ha.bergtobias.com # Your domain name
+      secretName: letsencrypt-production # Secret created by Cert-Manager
   rules:
     - host: ha.bergtobias.com
       http:
