@@ -19,7 +19,3 @@ spec:
                 name: home-assistant
                 port:
                   number: 8123
-  tls:
-    - hosts:
-        - home-assistant.bergtobias.com
-      secretName: home-assistant-tls # Replace with your TLS secret
