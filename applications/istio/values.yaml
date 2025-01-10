@@ -1,0 +1,16 @@
+global:
+  defaultPodDisruptionBudget:
+    enabled: true
+
+# For Istiod, you can enable Gateway API integration:
+pilot:
+  env:
+    ENABLE_EXPERIMENTAL_GW_API: "true"
+
+# For the Gateway Helm chart:
+gateways:
+  istio-ingressgateway:
+    type: LoadBalancer
+    # Example: specify K3s Service type or externalTrafficPolicy
+    serviceAnnotations:
+      metallb.universe.tf/address-pool: default

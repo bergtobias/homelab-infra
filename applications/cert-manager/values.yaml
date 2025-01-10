@@ -1,0 +1,4 @@
+# Example of disabling self-signed issuer or customizing webhook:
+installCRDs: false # Because we already included them as a resource above
+extraArgs:
+  - --dns01-recursive-nameservers-only

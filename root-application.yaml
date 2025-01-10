@@ -1,0 +1,24 @@
+# root-application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd # Make sure this matches your Argo CD namespace
+spec:
+  project: default
+
+  source:
+    repoURL: "https://github.com/bergtobias/homelab-infra"
+    targetRevision: main
+    path: apps # Points to the folder with child kustomizations or Helm charts
+    directory:
+      recurse: true # Ensure ArgoCD scans sub-folders
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default # or any cluster-wide namespace you prefer
+
+  syncPolicy:
+    automated:
+      prune: true # Automatically remove resources no longer defined in Git
+      selfHeal: true # Automatically revert drift to what’s in Git
