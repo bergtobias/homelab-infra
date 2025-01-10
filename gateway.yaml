@@ -8,15 +8,6 @@ metadata:
 spec:
   gatewayClassName: istio
   listeners:
-    - name: wildcard-https
-      protocol: HTTPS
-      port: 443
-      hostname: "*.bergtobias.com"
-      allowedRoutes:
-        namespaces:
-          from: All
-      tls:
-        certificateRefs:
-          - kind: Secret
-            group: ""
-            name: istio-ingress-cert
+    - port: 80
+      protocol: HTTP
+      name: http
