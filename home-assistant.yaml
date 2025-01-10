@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root-app
+  name: home-assistant
   namespace: argocd # Make sure this matches your Argo CD namespace
 spec:
   project: default
