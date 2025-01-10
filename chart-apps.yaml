@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: charts
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/<YOUR_ORG>/<YOUR_REPO>.git"
+        revision: main
+        directories:
+          - path: "charts/*"
+            # This tells the generator to look in 'charts/' for subfolders like service-a, service-b, etc.
+  template:
+    metadata:
+      # Use folder basename (e.g., 'service-a') as the Application name
+      name: "{{path.basename}}"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/<YOUR_ORG>/<YOUR_REPO>.git"
+        targetRevision: main
+        # Each generated Application uses the subfolder path (charts/service-a, charts/service-b, etc.)
+        path: "{{path}}"
+        helm:
+          # (Optional) use the folder’s name as the Helm release name
+          releaseName: "{{path.basename}}"
+
+          # (Optional) If each folder has values.yaml you want to use:
+          # valueFiles:
+          #   - values.yaml
+
+          # (Optional) Inline default values you want to add to each chart:
+          # values: |
+          #   replicaCount: 2
+
+      # Where to deploy the Helm chart
+      destination:
+        server: "https://kubernetes.default.svc"
+        # Optionally use the folder name as the namespace
+        namespace: "{{path.basename}}"
+
+      # Automatically sync and prune resources to match Git
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
