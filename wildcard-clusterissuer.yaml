@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    # The production ACME endpoint
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: tobiaswillyberg@gmail.com
+    privateKeySecretRef:
+      name: le-prod-private-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx
