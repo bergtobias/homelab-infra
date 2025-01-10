@@ -24,7 +24,7 @@ spec:
         namespace: "{{path.basename}}"
         createNamespace: true
 
-      # Auto-sync config (optional)
+      # Auto-sync config (optional) s
       syncPolicy:
         automated:
           prune: true
