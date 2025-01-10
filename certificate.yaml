@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: istio-ingress-cert # The secret to store the certificate
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt
     kind: ClusterIssuer
   commonName: bergtobias.com # Replace with your domain
   dnsNames:
