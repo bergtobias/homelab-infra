@@ -10,6 +10,10 @@ spec:
       protocol: HTTPS
       port: 443
       hostname: "*.bergtobias.com"
+      allowedRoutes:
+        namespaces:
+          from: Same
+
       tls:
         certificateRefs:
           - kind: Secret
