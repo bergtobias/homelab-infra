@@ -11,4 +11,4 @@ spec:
   rules:
     - backendRefs:
         - name: home-assistant # The Service receiving traffic
-          port: 80
+          port: 443
