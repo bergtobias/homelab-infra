@@ -12,11 +12,11 @@ spec:
         namespaces:
           from: All
     - name: https
-          protocol: HTTPS
-          port: 443
-          hostname: "*.bergtobias.com"
-          tls:
-            certificateRefs:
-              - kind: Secret
-                group: ""
-                name: bergtobias-com-cert
+      protocol: HTTPS
+      port: 443
+      hostname: "*.bergtobias.com"
+      tls:
+        certificateRefs:
+          - kind: Secret
+            group: ""
+            name: bergtobias-com-cert
