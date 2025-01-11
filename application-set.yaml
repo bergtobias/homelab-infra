@@ -9,7 +9,7 @@ spec:
         repoURL: "https://github.com/bergtobias/homelab-infra" # Replace with your Git repository URL
         revision: "main" # Branch to track
         directories:
-          - path: "apps/*" # Directory pattern to monitor
+          - path: "./apps/*" # Directory pattern to monitor
   template:
     metadata:
       name: "{{path.basename}}" # Uses the directory name as the application name
@@ -22,8 +22,10 @@ spec:
       destination:
         server: "https://kubernetes.default.svc" # Default Kubernetes API endpoint
         namespace: "{{path.basename}}" # Uses the directory name as the namespace
-      createNamespace: true
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
+      # Enables namespace creation if it does not exist
+      destinationNamespaceSpec:
+        createNamespace: true
