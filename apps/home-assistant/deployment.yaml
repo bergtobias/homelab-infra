@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: home-assistant
-          image: ghcr.io/home-assistant/amd64-hassio-supervisor:sha256-c4cae1a209bea6cd6799364ccf514e853eb3fafd3ab3ab580ffae5cfb9c37930.sig
+          image: ghcr.io/home-assistant/amd64-hassio-supervisor:latest
           ports:
             - containerPort: 8123
           volumeMounts:
