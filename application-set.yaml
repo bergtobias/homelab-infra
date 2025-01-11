@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-directory-generator
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/bergtobias/homelab-infra" # Replace with your Git repository URL
+        revision: "main" # Branch to track
+        directories:
+          - path: "./apps/*" # Directory pattern to monitor
+  template:
+    metadata:
+      name: "{{path.basename}}" # Uses the directory name as the application name
+    spec:
+      project: default # Replace with your ArgoCD project if needed
+      source:
+        repoURL: "https://github.com/bergtobias/homelab-infra" # Same as above
+        targetRevision: "main"
+        path: "{{path}}" # Matches the subdirectory path
+      destination:
+        server: "https://kubernetes.default.svc" # Default Kubernetes API endpoint
+        namespace: "{{path.basename}}" # Uses the directory name as the namespace
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      hooks:
+        - name: create-namespace
+          manifests:
+            - apiVersion: v1
+              kind: Namespace
+              metadata:
+                name: "{{path.basename}}" # Uses the directory name as the namespace
