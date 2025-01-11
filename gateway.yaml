@@ -17,6 +17,7 @@ spec:
       port: 443
       hostname: "*.bergtobias.com"
       tls:
+        mode: Terminate # If protocol is `TLS`, `Passthrough` is a possible mode
         certificateRefs:
           - kind: Secret
             group: ""
