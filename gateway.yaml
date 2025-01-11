@@ -1,17 +1,13 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: tls-gateway
-  namespace: istio-system
+  name: gateway
 spec:
-  gatewayClassName: istio
+  gatewayClassName: example
   listeners:
-    - name: https
-      protocol: HTTPS
-      port: 443
-      hostname: "*.bergtobias.com"
-      tls:
-        certificateRefs:
-          - kind: Secret
-            group: ""
-            name: bergtobias-com-cert
+    - protocol: HTTP
+      port: 80
+      name: http
+      allowedRoutes:
+        namespaces:
+          from: All
