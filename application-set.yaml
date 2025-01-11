@@ -28,6 +28,3 @@ spec:
         automated:
           prune: true
           selfHeal: true
-      # Enables namespace creation if it does not exist
-      destinationNamespaceSpec:
-        createNamespace: true
