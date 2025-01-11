@@ -22,14 +22,8 @@ spec:
       destination:
         server: "https://kubernetes.default.svc" # Default Kubernetes API endpoint
         namespace: "{{path.basename}}" # Uses the directory name as the namespace
+        createNamespace: true
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
-      hooks:
-        - name: create-namespace
-          manifests:
-            - apiVersion: v1
-              kind: Namespace
-              metadata:
-                name: "{{path.basename}}" # Uses the directory name as the namespace
