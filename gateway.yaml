@@ -16,7 +16,7 @@ spec:
       protocol: HTTPS
       port: 443
       tls:
-        mode: SIMPEL # If protocol is `TLS`, `Passthrough` is a possible mode
+        mode: Terminate # If protocol is `TLS`, `Passthrough` is a possible mode
         certificateRefs:
           - kind: Secret
             group: ""
