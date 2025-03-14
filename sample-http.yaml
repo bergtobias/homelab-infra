@@ -8,7 +8,7 @@ spec:
     - name: gateway # Must match the Gateway name
       namespace: istio-system # Must match the Gateway namespace
   hostnames:
-    - "app.cloud.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+    - "app.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
   rules:
     - backendRefs:
         - name: sample-nginx-svc # The Service receiving traffic
