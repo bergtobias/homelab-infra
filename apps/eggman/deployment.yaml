@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: eggman
-          image: ghcr.io/bergtobias/eggman:57dc767
+          image: ghcr.io/bergtobias/eggman:latest
           resources:
             requests:
               cpu: 100m
