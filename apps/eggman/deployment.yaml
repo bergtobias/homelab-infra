@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eggman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eggman
+  template:
+    metadata:
+      labels:
+        app: eggman
+    spec:
+      containers:
+        - name: eggman
+          image: ghcr.io/bergtobias/eggman:latest
+          ports:
+            - containerPort: 3030
+          # Optional: set resource requests/limits
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
