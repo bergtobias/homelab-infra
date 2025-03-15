@@ -25,10 +25,6 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-      # HTTP redirect to HTTPS (no TLS)
-
-      tls:
-        mode: Terminate
       redirect:
         authority:
           prefix: "https://"
