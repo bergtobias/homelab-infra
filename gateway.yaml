@@ -26,5 +26,3 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-      tls:
-        httpsRedirect: true # sends 301 redirect for http requests
