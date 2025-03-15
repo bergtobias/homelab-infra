@@ -25,7 +25,7 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-      # HTTP redirect to HTTPS
+      # HTTP redirect to HTTPS (no TLS configuration here)
 
       redirect:
         authority:
