@@ -6,13 +6,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: "69.8.2" # Use the exact version
-    chart: kube-prometheus-stack
+    repoURL: https://github.com/YOUR_GITOPS_REPO.git # Change to your GitOps repo
+    targetRevision: main # Or specify a branch/tag
+    path: helm-values # Path in your repo where the Helm values exist
     helm:
       valueFiles:
-        - helm-values/prometheus-values.yaml
-        - helm-values/grafana-values.yaml
+        - prometheus-values.yaml
+        - grafana-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
