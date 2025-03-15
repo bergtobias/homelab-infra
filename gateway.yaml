@@ -18,6 +18,7 @@ spec:
           - kind: Secret
             group: ""
             name: bergtobias-com-cert
+        mode: Terminate
     - name: wildcard-http
       protocol: HTTP
       port: 80
