@@ -11,8 +11,8 @@ spec:
     chart: kube-prometheus-stack
     helm:
       valueFiles:
-        - ./helm-values/prometheus-values.yaml
-        - ./helm-values/grafana-values.yaml
+        - helm-values/prometheus-values.yaml
+        - helm-values/grafana-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
