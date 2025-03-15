@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: eggman
-          image: ghcr.io/bergtobias/eggman:latest
+          image: ghcr.io/bergtobias/eggman:57dc767
           ports:
             - containerPort: 3030
           # Optional: set resource requests/limits
