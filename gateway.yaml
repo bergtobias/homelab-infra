@@ -18,12 +18,3 @@ spec:
           - kind: Secret
             group: ""
             name: bergtobias-com-cert
-    - port: 80
-      name: http
-      protocol: HTTP
-      hostname: "*.bergtobias.com"
-      allowedRoutes:
-        namespaces:
-          from: All
-      tls:
-        httpsRedirect: true # sends 301 redirect for http requests
