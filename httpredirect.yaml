@@ -10,7 +10,10 @@ spec:
   hostnames:
     - "*.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
   rules:
-    - filters:
+    - matches:
+        - path:
+            value: "/"
+      filters:
         - type: RequestRedirect
           requestRedirect:
             scheme: https
