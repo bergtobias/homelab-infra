@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sample-nginx
-  namespace: sample
 spec:
   replicas: 1
   selector:
@@ -19,6 +18,7 @@ spec:
           ports:
             - containerPort: 80
           # Optional: set resource requests/limits
+
           resources:
             requests:
               cpu: 100m
