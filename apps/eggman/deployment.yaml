@@ -15,8 +15,6 @@ spec:
       containers:
         - name: eggman
           image: ghcr.io/bergtobias/eggman:57dc767
-          ports:
-            - containerPort: 3000
           resources:
             requests:
               cpu: 100m
