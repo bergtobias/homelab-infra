@@ -26,7 +26,3 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
-      redirect:
-        authority:
-          prefix: "https://"
-        port: 443
