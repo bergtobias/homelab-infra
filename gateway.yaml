@@ -18,14 +18,4 @@ spec:
           - kind: Secret
             group: ""
             name: bergtobias-com-cert
-    - name: wildcard-http
-      protocol: HTTP
-      port: 80
-      hostname: "*.bergtobias.com"
-      allowedRoutes:
-        namespaces:
-          from: All
-      redirect:
-        authority:
-          prefix: "https://"
-        port: 443
+        mode: Terminate
