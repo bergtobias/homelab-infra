@@ -6,24 +6,24 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: "https://github.com/bergtobias/homelab-infra" # Replace with your Git repository URL
-        revision: "main" # Branch to track
+        repoURL: "https://github.com/bergtobias/homelab-infra"
+        revision: "main"
         directories:
-          - path: "apps/*/overlays/*" # Match overlays under each app recursively
+          - path: "apps/*/overlays/*"
   template:
     metadata:
-      annotations:
-        kargo.akuity.io/authorized-stage: "{{path[1]}}:{{path.basename}}"
       name: "{{path[1]}}-{{path.basename}}" # App name based on overlay folder (env)
+      annotations:
+        kargo.akuity.io/authorized-stage: "{{path[1]}}:{{path.basename}}" # Dynamic annotation based on path
     spec:
-      project: default # Change if needed
+      project: default
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: "main"
         path: "{{path}}" # Full path to the overlay
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: "{{path[1]}}-{{path.basename}}" # namespace = appname-env
+        namespace: "{{path[1]}}-{{path.basename}}" # Namespace = appname-env
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
