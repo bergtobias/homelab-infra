@@ -14,8 +14,9 @@ spec:
         valueFiles:
           - $values/helm-values/prometheus-values.yaml
           - $values/helm-values/grafana-values.yaml
-    # Source 2: Git repository for custom Helm values
-    - repoURL: https://github.com/your-org/your-values-repo.git # FIX: Add your repo URL
+    - repoURL: https://github.com/bergtobias/homelab-infra # FIX: Add your repo URL
+      # Source 2: Git repository for custom Helm values
+
       targetRevision: main # FIX: Specify a branch, tag, or commit
       ref: values
   destination:
