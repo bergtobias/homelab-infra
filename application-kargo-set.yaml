@@ -12,7 +12,7 @@ spec:
           - path: "apps/*"
   template:
     metadata:
-      name: "{{path.basename}}" # App name based on overlay folder (env)
+      name: "{{path.basename}}-kargo" # App name based on overlay folder (env)
     spec:
       project: default
       source:
@@ -21,7 +21,7 @@ spec:
         path: "{{path}}/kargo" # Full path to the overlay
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: "{{path.basename}}" # Namespace = appname-env
+        namespace: "{{path.basename}}-kargo" # Namespace = appname-env
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
