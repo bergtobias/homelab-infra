@@ -18,3 +18,4 @@ spec:
           - kind: Secret
             group: ""
             name: bergtobias-com-cert
+        mode:
