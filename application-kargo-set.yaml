@@ -9,19 +9,19 @@ spec:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         revision: "main"
         directories:
-          - path: "apps/*/kargo"
+          - path: "apps/*"
   template:
     metadata:
-      name: "{{path[1]}}" # App name based on overlay folder (env)
+      name: "{{path.basename}}" # App name based on overlay folder (env)
     spec:
       project: default
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: "main"
-        path: "{{path}}" # Full path to the overlay
+        path: "/kargo" # Full path to the overlay
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: "{{path[1]}}" # Namespace = appname-env
+        namespace: "{{path.basename}}" # Namespace = appname-env
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
