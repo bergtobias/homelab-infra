@@ -14,44 +14,31 @@ spec:
     - name: openpr
       value: "false"
   steps:
-    # Clone the Git repository that contains the Kustomize configuration
-    # to the ./src directory.
     - uses: git-clone
       config:
         repoURL: ${{ vars.repoURL }}
         checkout:
-          - branch: ${{ vars.branch }}
+          branch: ${{ vars.branch }}
     - uses: kustomize-set-image
-      # Update the image in the Kustomize configuration located at ./env/<stage>
-
-      # in the repository.
       as: update-image
       config:
         path: ./apps/eggman/prod
         images:
-          - image: ${{ vars.image }}
-            tag: ${{ imageFrom( vars.image ).Tag }}
+          - name: ${{ vars.image }}
+            newTag: ${{ imageFrom(vars.image).Tag }}
     - uses: git-commit
-      # Commit the changes to the Git repository.
-
       as: commit
       config:
         message: ${{ task.outputs['update-image'].commitMessage }}
     - uses: git-push
-      # Push the changes to the Git repository.
-
       if: ${{ vars.openpr != 'true' }}
     - uses: git-push
-      # Push the changes to a newly created branch in the Git repository.
-
-      if: ${{ vars.openpr == 'true' }}
       as: push
+      if: ${{ vars.openpr == 'true' }}
       config:
         path: ./
         generateTargetBranch: true
     - uses: git-open-pr
-      # Open a pull request to merge the changes into the main branch.
-
       as: open-pr
       if: ${{ vars.openpr == 'true' }}
       config:
@@ -60,20 +47,14 @@ spec:
         sourceBranch: ${{ task.outputs.push.branch }}
         targetBranch: ${{ vars.branch }}
     - uses: git-wait-for-pr
-      # Wait for the pull request to be merged.
-
       as: wait-for-pr
       if: ${{ vars.openpr == 'true' }}
       config:
         repoURL: ${{ vars.repoURL }}
         prNumber: ${{ task.outputs['open-pr'].prNumber }}
     - uses: argocd-update
-      # If you have an Argo CD Application that should be synced after the Git
-
-      # app name.te
-      # repository is updated, uncomment the following lines and specify the
       config:
         apps:
           - name: eggman-${{ ctx.stage }}
             sources:
-          - repoURL: ${{ vars.repoURL }}
+              - repoURL: ${{ vars.repoURL }}
