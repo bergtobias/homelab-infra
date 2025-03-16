@@ -1,28 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-grafana
+  name: prometheus
   namespace: argocd
 spec:
-  project: default
-  sources:
-    # Source 1: Helm chart repository
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      targetRevision: "69.8.2" # Exact version of kube-prometheus-stack chart
-      chart: kube-prometheus-stack
-      helm:
-        valueFiles:
-          - $values/helm-values/prometheus-values.yaml
-          - $values/helm-values/grafana-values.yaml
-    - repoURL: https://github.com/bergtobias/homelab-infra # FIX: Add your repo URL
-      # Source 2: Git repository for custom Helm values
-
-      targetRevision: main # FIX: Specify a branch, tag, or commit
-      ref: values
   destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    name: in-cluster
+    namespace: argocd
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 45.6.0
+    chart: kube-prometheus-stack
