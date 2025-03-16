@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: "main"
-        path: "./kargo" # Full path to the overlay
+        path: "kargo" # Full path to the overlay
       destination:
         server: "https://kubernetes.default.svc"
         namespace: "{{path.basename}}" # Namespace = appname-env
