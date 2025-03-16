@@ -6,5 +6,7 @@ metadata:
 spec:
   subscriptions:
     - image:
+        discoveryLimit: 20
+        imageSelectionStrategy: NewestBuild
         repoURL: ghcr.io/bergtobias/eggman
-        imageSelectionStrategy: Latest
+        strictSemvers: true
