@@ -15,5 +15,5 @@ spec:
             type: PathPrefix
             value: / # Route all traffic
       backendRefs:
-        - name: kube-prometheus-stack-grafana
+        - name: prometheus-grafana
           port: 80 # Service port
