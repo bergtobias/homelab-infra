@@ -8,4 +8,3 @@ resources:
   - stages.yaml
   - svcmonitor.yaml
   - warehouse.yaml
-  - ../kargo/
