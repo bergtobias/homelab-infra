@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: eggman-servicemonitor
+  namespace: default # The namespace where Prometheus is deployed
+  labels:
+    release: promstack # MUST match Prometheus release label
+spec:
+  selector:
+    matchLabels:
+      app: eggman # Match the label of your eggman service
+  namespaceSelector:
+    matchNames:
+      - eggman # Namespace where Eggman service is running
+  endpoints:
+    - port: metrics # This should match the port name in the Eggman service
+      path: /metrics # Metrics path (ensure this is exposed in your app)
+      interval: 15s
+      scheme: http
+      targetPort: 3000 # Adjust if necessary to match the target port for metrics
