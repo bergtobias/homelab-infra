@@ -13,7 +13,7 @@ spec:
     matchNames:
       - eggman # Namespace where Eggman service is running
   endpoints:
-    - port: metrics # This should match the port name in the Eggman service
+    - port: eggman-svc # This should match the port name in the Eggman service
       path: /metrics # Metrics path (ensure this is exposed in your app)
       interval: 15s
       scheme: http
