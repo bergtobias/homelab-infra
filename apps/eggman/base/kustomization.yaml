@@ -1,0 +1,10 @@
+resources:
+  - deployment.yaml
+  - http.yaml
+  - podmon.yaml
+  - project.yaml
+  - promotion.yaml
+  - service.yaml
+  - stages.yaml
+  - svcmonitor.yaml
+  - warehouse.yaml
