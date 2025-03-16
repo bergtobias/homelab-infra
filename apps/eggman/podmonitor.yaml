@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: eggman-podmonitor
-  namespace: monitoring
+  namespace: default # Prometheus is in default, so PodMonitor must be here
   labels:
     release: promstack # MUST match Prometheus release label
 spec:
@@ -11,10 +11,9 @@ spec:
       app: eggman
   namespaceSelector:
     matchNames:
-      - default # Namespace where Eggman runs
+      - eggman # Namespace where Eggman is running
   podMetricsEndpoints:
-    - port: metrics # port name is optional, use 'port' OR 'targetPort' or define below
-      path: /metrics
+    - path: /metrics
       interval: 15s
       scheme: http
       targetPort: 3000
