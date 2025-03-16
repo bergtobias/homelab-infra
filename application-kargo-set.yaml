@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-overlay-generator
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: "https://github.com/bergtobias/homelab-infra"
+        revision: "main"
+        directories:
+          - path: "apps/*/kargo"
+  template:
+    metadata:
+      name: "{{path[1]}}" # App name based on overlay folder (env)
+      annotations:
+        kargo.akuity.io/authorized-stage: "{{path[1]}}-kargo" # Dynamic annotation based on path
+        test: "true"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/bergtobias/homelab-infra"
+        targetRevision: "main"
+        path: "{{path}}" # Full path to the overlay
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "{{path[1]}}" # Namespace = appname-env
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
