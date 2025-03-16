@@ -12,6 +12,8 @@ spec:
           - path: "apps/*/overlays/*" # Match overlays under each app recursively
   template:
     metadata:
+      annotations:
+        kargo.akuity.io/authorized-stage: "{{path[1]}}:{{path.basename}}"
       name: "{{path[1]}}-{{path.basename}}" # App name based on overlay folder (env)
     spec:
       project: default # Change if needed
