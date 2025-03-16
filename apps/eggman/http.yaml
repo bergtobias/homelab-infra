@@ -11,4 +11,4 @@ spec:
   rules:
     - backendRefs:
         - name: eggman-svc # The Service receiving traffic
-          port: 3000
+          port: 80
