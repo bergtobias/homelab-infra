@@ -12,7 +12,7 @@ spec:
           - path: "apps/*/overlays/*" # Match overlays under each app recursively
   template:
     metadata:
-      name: "{{path.basename}}" # App name based on overlay folder (env)
+      name: "{{path[1]}}-{{path.basename}}" # App name based on overlay folder (env)
     spec:
       project: default # Change if needed
       source:
