@@ -21,15 +21,14 @@ spec:
         repoURL: ${{ vars.repoURL }}
         checkout:
           - branch: ${{ vars.branch }}
-            path: ./src
+            path: ./
     - uses: kustomize-set-image
       # Update the image in the Kustomize configuration located at ./env/<stage>
 
       # in the repository.
-
       as: update-image
       config:
-        path: ./src/env/${{ ctx.stage }}
+        path: ./apps/eggman
         images:
           - image: ${{ vars.image }}
             tag: ${{ imageFrom( vars.image ).Tag }}
@@ -38,21 +37,21 @@ spec:
 
       as: commit
       config:
-        path: ./src
+        path: ./
         message: ${{ task.outputs['update-image'].commitMessage }}
     - uses: git-push
       # Push the changes to the Git repository.
 
       if: ${{ vars.openpr != 'true' }}
       config:
-        path: ./src
+        path: ./
     - uses: git-push
       # Push the changes to a newly created branch in the Git repository.
 
       if: ${{ vars.openpr == 'true' }}
       as: push
       config:
-        path: ./src
+        path: ./
         generateTargetBranch: true
     - uses: git-open-pr
       # Open a pull request to merge the changes into the main branch.
@@ -72,13 +71,13 @@ spec:
       config:
         repoURL: ${{ vars.repoURL }}
         prNumber: ${{ task.outputs['open-pr'].prNumber }}
-    # repository is updated, uncomment the following lines and specify the
-    # app name.
     - uses: argocd-update
       # If you have an Argo CD Application that should be synced after the Git
 
+      # app name.te
+      # repository is updated, uncomment the following lines and specify the
       config:
         apps:
-          - name: guestbook-${{ ctx.stage }}
+          - name: eggman-${{ ctx.stage }}
             sources:
           - repoURL: ${{ vars.repoURL }}
