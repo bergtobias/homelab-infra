@@ -1,0 +1,5 @@
+resources:
+  - project.yaml
+  - promotion.yaml
+  - stages.yaml
+  - warehouse.yaml
