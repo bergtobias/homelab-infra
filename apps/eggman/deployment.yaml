@@ -9,6 +9,10 @@ spec:
       app: eggman
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000" # Change to 3000 if metrics are exposed on port 3000
       labels:
         app: eggman
     spec:
