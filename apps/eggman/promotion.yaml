@@ -28,7 +28,7 @@ spec:
       # in the repository.
       as: update-image
       config:
-        path: ./apps/eggman
+        path: ./apps/eggman/prod
         images:
           - image: ${{ vars.image }}
             tag: ${{ imageFrom( vars.image ).Tag }}
