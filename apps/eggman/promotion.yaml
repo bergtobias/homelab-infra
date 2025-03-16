@@ -21,7 +21,6 @@ spec:
         repoURL: ${{ vars.repoURL }}
         checkout:
           - branch: ${{ vars.branch }}
-            path: ./
     - uses: kustomize-set-image
       # Update the image in the Kustomize configuration located at ./env/<stage>
 
@@ -37,14 +36,11 @@ spec:
 
       as: commit
       config:
-        path: ./
         message: ${{ task.outputs['update-image'].commitMessage }}
     - uses: git-push
       # Push the changes to the Git repository.
 
       if: ${{ vars.openpr != 'true' }}
-      config:
-        path: ./
     - uses: git-push
       # Push the changes to a newly created branch in the Git repository.
 
