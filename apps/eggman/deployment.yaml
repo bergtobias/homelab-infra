@@ -12,7 +12,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/metrics"
-        prometheus.io/port: "8080"
+        prometheus.io/port: "3000" # Change to 3000 if metrics are exposed on port 3000
       labels:
         app: eggman
     spec:
@@ -20,7 +20,7 @@ spec:
         - name: eggman
           image: ghcr.io/bergtobias/eggman:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 3000 # No change here if the app serves on port 3000
           resources:
             requests:
               cpu: 100m
