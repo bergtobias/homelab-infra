@@ -26,10 +26,9 @@ spec:
       # Update the image in the Kustomize configuration located at ./env/<stage>
 
       # in the repository.
-
       as: update-image
       config:
-        path: ./src/apps/eggman/${{ ctx.stage }}
+        path: ./src/apps/eggman/overlays/${{ ctx.stage }}
         images:
           - image: ${{ vars.image }}
             tag: ${{ imageFrom( vars.image ).Tag }}
