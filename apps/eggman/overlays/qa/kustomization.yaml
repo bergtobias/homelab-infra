@@ -1,16 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../base
+- ../../base
 images:
-  - name: ghcr.io/bergtobias/eggman
-    newTag: 6d96078
+- name: ghcr.io/bergtobias/eggman
+  newTag: 9b64020
 namePrefix: qa-
 patches:
-  - target:
-      kind: HTTPRoute
-      name: egman-route
-    patch: |-
-      - op: replace
-        path: /spec/hostnames/0
-        value: eggman-qa.bergtobias.com
+- target:
+    kind: HTTPRoute
+    name: egman-route
+  patch: |-
+    - op: replace
+      path: /spec/hostnames/0
+      value: eggman-qa.bergtobias.com
