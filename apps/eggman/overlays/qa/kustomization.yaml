@@ -4,7 +4,7 @@ resources:
 - ../../base
 images:
 - name: ghcr.io/bergtobias/eggman
-  newTag: 9b64020
+  newTag: 6463ed6
 patches:
 - target:
     kind: HTTPRoute
