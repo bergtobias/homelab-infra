@@ -6,6 +6,7 @@ spec:
   parentRefs:
   - name: gateway
     sectionName: http
+    namespace: istio
   hostnames:
   - *.bergtobias.com
   rules:
