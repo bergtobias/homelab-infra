@@ -3,6 +3,26 @@ kind: Stage
 metadata:
   name: prod
   annotations:
+    kargo.akuity.io/color: green
+spec:
+  requestedFreight:
+    - origin:
+        kind: Warehouse
+        name: eggman
+      sources:
+        stages:
+          - qa
+  promotionTemplate:
+    spec:
+      steps:
+        - task:
+            name: promote
+---
+apiVersion: kargo.akuity.io/v1alpha1
+kind: Stage
+metadata:
+  name: qa
+  annotations:
     kargo.akuity.io/color: violet
 spec:
   requestedFreight:
@@ -14,6 +34,3 @@ spec:
       steps:
         - task:
             name: promote
-          vars:
-            - name: openpr
-              value: "false"
