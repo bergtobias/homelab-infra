@@ -29,7 +29,7 @@ spec:
     - origin:
         kind: Warehouse
         name: eggman
-      ources:
+      sources:
         direct: true
   promotionTemplate:
     spec:
