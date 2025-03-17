@@ -1,6 +1,4 @@
 resources:
   - deployment.yaml
   - http.yaml
-  - podmon.yaml
   - service.yaml
-  - svcmonitor.yaml
