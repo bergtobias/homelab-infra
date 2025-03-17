@@ -3,11 +3,5 @@ kind: Kustomization
 resources:
   - ../../base
 images:
-<<<<<<< HEAD
   - name: ghcr.io/bergtobias/eggman
     newTag: 986c7a9
-=======
-- name: ghcr.io/bergtobias/eggman
-  newTag: 6d96078
-namePrefix: prod-
->>>>>>> 3daca6a3ae3b380cdab723e681eecfac5ed3a706
