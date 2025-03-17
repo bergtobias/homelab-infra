@@ -4,5 +4,5 @@ resources:
 - ../../base
 images:
 - name: ghcr.io/bergtobias/eggman
-  newTag: 986c7a9
+  newTag: 6d96078
 namePrefix: prod-
