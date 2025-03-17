@@ -2,6 +2,7 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
 metadata:
   name: promote
+  namespace: eggman-kargo
 spec:
   vars:
     - name: repoURL
@@ -73,8 +74,8 @@ spec:
         # If you have an Argo CD Application that should be synced after the Git
     - uses: argocd-update
       # repository is updated, uncomment the following lines and specify the
-      # app name.
 
+      # app name.
       config:
         apps:
           - name: eggman-${{ ctx.stage }}
