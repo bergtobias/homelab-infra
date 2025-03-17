@@ -13,6 +13,9 @@ spec:
   template:
     metadata:
       name: "{{path[1]}}-{{path.basename}}" # App name based on overlay folder (env)
+      labels:
+        env: "{{path.basename}}"
+        app: "{{path[1]}}"
       annotations:
         kargo.akuity.io/authorized-stage: "{{path[1]}}-kargo:{{path.basename}}" # Dynamic annotation based on path
     spec:
