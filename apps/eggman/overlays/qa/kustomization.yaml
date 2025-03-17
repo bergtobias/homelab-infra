@@ -5,3 +5,4 @@ resources:
 images:
   - name: ghcr.io/bergtobias/eggman
     newTag: 986c7a9
+namePrefix: qa-
