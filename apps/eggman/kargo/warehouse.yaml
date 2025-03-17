@@ -2,7 +2,6 @@ apiVersion: kargo.akuity.io/v1alpha1
 kind: Warehouse
 metadata:
   name: eggman
-  namespace: eggman-kargo
 spec:
   subscriptions:
     - image:
