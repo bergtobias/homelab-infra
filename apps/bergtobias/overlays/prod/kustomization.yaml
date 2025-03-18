@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: ghcr.io/bergtobias/bergtobias
-  newTag: 8af2528
+  newTag: f14902c
