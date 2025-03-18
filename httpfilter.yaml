@@ -4,14 +4,14 @@ metadata:
   name: http-filter-redirect
 spec:
   parentRefs:
-  - name: gateway
-    sectionName: http
-    namespace: istio-system
+    - name: gateway
+      sectionName: http
+      namespace: istio-system
   hostnames:
-  - *.bergtobias.com
+    - "*.bergtobias.com"
   rules:
-  - filters:
-    - type: RequestRedirect
-      requestRedirect:
-        scheme: https
-        statusCode: 301
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301
