@@ -11,5 +11,5 @@ spec:
     - "vault.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
   rules:
     - backendRefs:
-        - name: vault-agent-injector-svc # The Service receiving traffic
-          port: 443
+        - name: vault # The Service receiving traffic
+          port: 8200
