@@ -18,7 +18,6 @@ spec:
     spec:
       containers:
         - name: eggman
-          image: ghcr.io/bergtobias/eggman:latest
           ports:
             - containerPort: 3000 # No change here if the app serves on port 3000
           resources:

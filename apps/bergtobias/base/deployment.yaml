@@ -18,7 +18,6 @@ spec:
     spec:
       containers:
         - name: bergtobias
-          image: ghcr.io/bergtobias/bergtobias:8af2528
           ports:
             - containerPort: 3000 # No change here if the app serves on port 3000
           resources:
