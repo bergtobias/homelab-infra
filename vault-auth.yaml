@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: vault-k8s-auth-setup
+  namespace: vault # <-- Correct namespace
 spec:
   template:
     spec:
