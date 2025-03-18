@@ -9,7 +9,7 @@ spec:
       serviceAccountName: vault
       containers:
         - name: vault
-          image: vault:1.13
+          image: hashicorp/vault:1.13.3 # <-- Fixed here
           command: ["/bin/sh", "-c"]
           args:
             - |
