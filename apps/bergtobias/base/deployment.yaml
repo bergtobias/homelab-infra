@@ -18,6 +18,7 @@ spec:
     spec:
       containers:
         - name: bergtobias
+          image: placeholder
           ports:
             - containerPort: 3000 # No change here if the app serves on port 3000
           resources:
