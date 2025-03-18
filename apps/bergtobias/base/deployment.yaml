@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bergtobias
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bergtobias
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000" # Change to 3000 if metrics are exposed on port 3000
+      labels:
+        app: bergtobias
+    spec:
+      containers:
+        - name: bergtobias
+          image: ghcr.io/bergtobias/bergtobias:latest
+          ports:
+            - containerPort: 3000 # No change here if the app serves on port 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
