@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - ../../base
 images:
-  - name: ghcr.io/bergtobias/bergtobias:f14902c
+  - name: ghcr.io/bergtobias/bergtobias
     newTag: 6463ed6
