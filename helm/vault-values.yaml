@@ -1,4 +1,0 @@
-injector:
-  enabled: true
-  agentImage:
-    repository: hashicorp/vault
