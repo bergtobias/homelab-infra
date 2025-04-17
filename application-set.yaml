@@ -33,4 +33,3 @@ spec:
         automated:
           prune: true
           selfHeal: true
-    when: "{{ lookup('file', 'apps/{{path[1]}}/overlays/{{path.basename}}/enabled.yaml') | default({'enabled': true}) | fromYaml }}.enabled == true"
