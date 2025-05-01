@@ -43,8 +43,8 @@ spec:
             - containerPort: 5353 # Same change for TCP
               hostPort: 5353
               protocol: TCP
-            - containerPort: 8080 # Pi-hole web UI on a non-conflicting port
-              hostPort: 8080
+            - containerPort: 8000 # Pi-hole web UI on a non-conflicting port
+              hostPort: 8000
               protocol: TCP
           envFrom:
             - configMapRef:
