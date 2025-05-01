@@ -70,7 +70,7 @@ spec:
     app: pihole
   type: ClusterIP
   ports:
-    - port: 80
+    - port: 443
       targetPort: 8080
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -87,4 +87,4 @@ spec:
   rules:
     - backendRefs:
         - name: pihole-web # Name of the service that exposes Pi-hole's web UI
-          port: 80 # Port that Pi-hole's web UI service listens on
+          port: 443 # Port that Pi-hole's web UI service listens on
