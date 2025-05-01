@@ -37,11 +37,14 @@ spec:
         - name: pihole
           image: pihole/pihole:latest
           ports:
-            - containerPort: 53
+            - containerPort: 5353 # Change DNS port to avoid conflict
+              hostPort: 5353
               protocol: UDP
-            - containerPort: 53
+            - containerPort: 5353 # Same change for TCP
+              hostPort: 5353
               protocol: TCP
-            - containerPort: 80
+            - containerPort: 8080 # Pi-hole web UI on a non-conflicting port
+              hostPort: 8080
               protocol: TCP
           envFrom:
             - configMapRef:
