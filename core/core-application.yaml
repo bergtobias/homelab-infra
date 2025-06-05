@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: core‐applicationset
+  namespace: argocd
+spec:
+  # Git generator will scan the repo for directories matching "core/*"
+  generators:
+    - git:
+        repoURL: "https://github.com/bergotobias/homelab-infra" # ← replace with your repo
+        revision: HEAD # or specify a branch/tag
+        directories:
+          # This will match: core/cert-manager, core/gateway-api, core/grafana, etc.
+          - path: "core/*"
+
+  # Template for each generated Argo CD Application
+  template:
+    metadata:
+      # The application name will be "core-<basename-of-path>", e.g. "core-cert-manager"
+      name: "core-{{path.basename}}"
+    spec:
+      project: default # ← Argo CD Project (adjust if you have a custom Project)
+      source:
+        repoURL: "https://github.com/bergotobias/homelab-infra"
+        targetRevision: HEAD
+        # Use "{{path}}" verbatim: this expands to e.g. "core/cert-manager"
+        path: "{{path}}"
+      destination:
+        # By default we point to the same cluster (in-cluster API) and namespace:
+        server: "https://kubernetes.default.svc"
+        namespace: "argocd" # ← or "kube-system", "monitoring", etc., depending on what each folder holds
+      syncPolicy:
+        automated:
+          prune: true # automatically prune resources no longer in Git
+          selfHeal: true # auto-correct drift
+
+
+  # (Optional) If you want to add a webhook trigger for the entire core set,
+  # you can add a `webhooks:` block here exactly like you do for a single Application.
+  # That way, a push to any `core/*` folder causes all of them to refresh.
+  #
+  # webhooks:
+  #  - type: GitHub
+  #    secret: <your-shared-webhook-secret>
