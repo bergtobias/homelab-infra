@@ -8,7 +8,7 @@ spec:
   generators:
     - git:
         repoURL: "https://github.com/bergotobias/homelab-infra" # ← replace with your repo
-        revision: HEAD # or specify a branch/tag
+        revision: main # or specify a branch/tag
         directories:
           # This will match: core/cert-manager, core/gateway-api, core/grafana, etc.
           - path: "core/*"
@@ -22,7 +22,7 @@ spec:
       project: default # ← Argo CD Project (adjust if you have a custom Project)
       source:
         repoURL: "https://github.com/bergotobias/homelab-infra"
-        targetRevision: HEAD
+        targetRevision: main
         # Use "{{path}}" verbatim: this expands to e.g. "core/cert-manager"
         path: "{{path}}"
       destination:
