@@ -7,7 +7,7 @@ spec:
   # Git generator will scan the repo for directories matching "core/*"
   generators:
     - git:
-        repoURL: "https://github.com/bergotobias/homelab-infra" # ← replace with your repo
+        repoURL: "https://github.com/bergtobias/homelab-infra" # ← replace with your repo
         revision: main # or specify a branch/tag
         directories:
           # This will match: core/cert-manager, core/gateway-api, core/grafana, etc.
@@ -21,7 +21,7 @@ spec:
     spec:
       project: default # ← Argo CD Project (adjust if you have a custom Project)
       source:
-        repoURL: "https://github.com/bergotobias/homelab-infra"
+        repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: main
         # Use "{{path}}" verbatim: this expands to e.g. "core/cert-manager"
         path: "{{path}}"
