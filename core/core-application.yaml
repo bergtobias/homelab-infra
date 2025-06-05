@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: core‐applicationset
+  name: core-applicationset
   namespace: argocd
 spec:
   # Git generator will scan the repo for directories matching "core/*"
