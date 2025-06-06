@@ -4,4 +4,4 @@ resources:
 - ../../base
 images:
 - name: ghcr.io/bergtobias/eggman
-  newTag: 51a5019
+  newTag: ba1c807
