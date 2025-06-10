@@ -4,6 +4,7 @@ helmCharts:
   - name: namespace-chart
     repo: ghcr.io/bergtobias/namespace-chart
     releaseName: tenant-a
+    version: 0.1.0
     valuesInline:
       namespace:
         name: tenant-a
