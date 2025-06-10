@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace-application
+  name: namespace-applications
   namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-  project: default
+  project: apps
   source:
     repoURL: https://github.com/bergtobias/homelab-infra
     targetRevision: HEAD

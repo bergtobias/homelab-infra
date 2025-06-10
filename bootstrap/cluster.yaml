@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: core-applicationset
+  name: cluster-applications
   namespace: argocd
 spec:
   # Git generator will scan the repo for directories matching "core/*"
@@ -11,14 +11,14 @@ spec:
         revision: main # or specify a branch/tag
         directories:
           # This will match: core/cert-manager, core/gateway-api, core/grafana, etc.
-          - path: "core/*"
+          - path: "cluster/*"
   # Template for each generated Argo CD Application
   template:
     metadata:
       # The application name will be "core-<basename-of-path>", e.g. "core-cert-manager"
       name: "core-{{path.basename}}"
     spec:
-      project: default # ← Argo CD Project (adjust if you have a custom Project)
+      project: cluster-apps # ← Argo CD Project (adjust if you have a custom Project)
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: main
