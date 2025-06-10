@@ -12,7 +12,6 @@ spec:
         directories:
           # This will match: core/cert-manager, core/gateway-api, core/grafana, etc.
           - path: "core/*"
-
   # Template for each generated Argo CD Application
   template:
     metadata:
@@ -34,11 +33,10 @@ spec:
           prune: true # automatically prune resources no longer in Git
           selfHeal: true # auto-correct drift
 
-
-  # (Optional) If you want to add a webhook trigger for the entire core set,
-  # you can add a `webhooks:` block here exactly like you do for a single Application.
-  # That way, a push to any `core/*` folder causes all of them to refresh.
-  #
-  # webhooks:
-  #  - type: GitHub
-  #    secret: <your-shared-webhook-secret>
+# (Optional) If you want to add a webhook trigger for the entire core set,
+# you can add a `webhooks:` block here exactly like you do for a single Application.
+# That way, a push to any `core/*` folder causes all of them to refresh.
+#
+# webhooks:
+#  - type: GitHub
+#    secret: <your-shared-webhook-secret>
