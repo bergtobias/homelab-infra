@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/bergtobias/homelab-infra
+        revision: HEAD # or 'main'
+        directories:
+          - path: apps/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bergtobias/homelab-infra
+        targetRevision: HEAD
+        path: '{{path}}' # <-- resolves to teams/team-a/, etc.
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}' # Creates a namespace matching team dir, e.g., 'team-a'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
