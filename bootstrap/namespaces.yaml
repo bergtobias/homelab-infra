@@ -12,6 +12,8 @@ spec:
     repoURL: https://github.com/bergtobias/homelab-infra
     targetRevision: HEAD
     path: namespaces
+    kustomize:
+      enableHelm: true
   syncPolicy:
     automated:
       prune: true
