@@ -1,0 +1,30 @@
+name: Publish Helm Chart to GHCR
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'charts/namespace-chart/**'
+jobs:
+  publish-helm:
+    name: Package & Push Helm Chart
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.14.0 # or latest
+      - name: Package Helm chart
+        run: |
+          helm package charts/namespace-chart --destination packaged/
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push Helm chart to GHCR
+        run: |
+          CHART_FILE=$(ls packaged/*.tgz)
+          helm push "$CHART_FILE" oci://ghcr.io/${{ github.repository_owner }}/
