@@ -4,9 +4,7 @@ metadata:
   name: {{ .Values.resourceQuota.name }}
   namespace: {{ .Values.namespace.name }}
 spec:
-  
   hard:
     {{- range $key, $value := .Values.resourceQuota.hard }}
-    {{ $key }}: {{ $value }}
+    {{ $key }}: {{ $value | quote }}
     {{- end }}
-    

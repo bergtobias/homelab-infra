@@ -2,16 +2,22 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 helmCharts:
   - name: namespace-chart
-    repo: file://../../charts/namespace-chart # ← lokal path!
-    releaseName: eggman
+    repo: file://../../charts/namespace-chart
+    releaseName: tenant-a
     valuesInline:
       namespace:
-        name: dev
+        name: tenant-a
         labels:
-          environment: dev
-          team: devops
+          app-id: tenant-a-app
+      resourceQuota:
+        name: usage-quota
+        hard:
+          requests.cpu: "4"
+          requests.memory: 8Gi
+          limits.cpu: "8"
+          limits.memory: 16Gi
       apps:
         - name: eggman
-          repo: https://github.com/bergtobias/homelab-infra
+          repoURL: https://github.com/bergtobias/homelab-infra
           path: apps/eggman
           targetRevision: main
