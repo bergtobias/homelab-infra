@@ -18,7 +18,7 @@ spec:
       # The application name will be "core-<basename-of-path>", e.g. "core-cert-manager"
       name: "core-{{path.basename}}"
     spec:
-      project: cluster-apps # ← Argo CD Project (adjust if you have a custom Project)
+      project: default # ← Argo CD Project (adjust if you have a custom Project)
       source:
         repoURL: "https://github.com/bergtobias/homelab-infra"
         targetRevision: main
