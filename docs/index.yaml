@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  namespace-chart:
+  - apiVersion: v2
+    created: "2025-06-10T19:56:28.410797483+02:00"
+    description: A chart to provision a namespace and apps
+    digest: e1cb4888471e94a6368301e6c0a6576c9ec5a6b61aa90d983973428a6c342bd5
+    name: namespace-chart
+    urls:
+    - https://bergtobias.github.io/homelab-infra/docs/namespace-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-06-10T19:56:28.410475769+02:00"
