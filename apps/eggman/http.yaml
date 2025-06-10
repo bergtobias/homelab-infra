@@ -1,7 +1,9 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: egman-route
+  name: eggman
+  labels:
+    backstage.io/kubernetes-id: eggman
 spec:
   parentRefs:
     - name: gateway # Must match the Gateway name
