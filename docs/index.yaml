@@ -1,14 +1,14 @@
 apiVersion: v1
 entries:
   namespace-chart:
-  - apiVersion: v2
-    appVersion: "1.0"
-    created: "2025-06-10T19:09:26.856532598+02:00"
-    description: A Helm chart for boostraping application namespaces
-    digest: 133fe3ec47a55a2b22cffc3b959082afb7a7d86ad35501f1181ba669f87465c3
-    name: namespace-chart
-    type: application
-    urls:
-    - https://bergtobias.github.io/homelab-infra/namespace-chart-0.1.0.tgz
-    version: 0.1.0
-generated: "2025-06-10T19:09:26.855945035+02:00"
+    - apiVersion: v2
+      appVersion: "1.0"
+      created: "2025-06-10T19:28:39.864169305+02:00"
+      description: A Helm chart for boostraping application namespaces
+      digest: 62eac484692c5b2be46648b1001a8b7a289b61ccb5d7bf585ab0b632a84a2a85
+      name: namespace-chart
+      type: application
+      urls:
+        - https://bergtobias.github.io/homelab-infra/docs/namespace-chart-0.1.0.tgz
+      version: 0.1.0
+generated: "2025-06-10T19:28:39.863871092+02:00"
