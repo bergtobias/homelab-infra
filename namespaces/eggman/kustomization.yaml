@@ -31,3 +31,4 @@ spec:
           - name: eggman
             repoURL: https://github.com/bergtobias/homelab-infra
             path: apps/eggman/overlays/prod
+            targetRevision: HEAD
