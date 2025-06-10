@@ -1,34 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: nginx
-  namespace: argocd
-spec:
-  project: default
-  destination:
-    name: "default"
-    namespace: nginx
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-  source:
-    chart: namespace-chart
-    repoURL: ghcr.io/bergtobias
-    targetRevision: 0.1.0
-    helm:
-      values: |
-        namespace:
-          name: nginx
-        resourceQuota:
-          name: nginx-quota
-          hard:
-            requests.cpu: "500m"
-            requests.memory: "512Mi"
-            limits.cpu: "1"
-            limits.memory: "1Gi"
-        apps:
-          - name: eggman
-            repoURL: https://github.com/bergtobias/homelab-infra
-            path: apps/eggman/overlays/prod
-            targetRevision: HEAD
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: oci://your-oci-registry.example.com/charts/namespace-init-chart # <--- CHANGE THIS: OCI registry path
+    version: 1.0.0 # <--- ADD THIS: Specify the chart version
+    releaseName: team-a-namespace-init
+    namespace: team-a-namespace
+    # --- Choose one of the following for your team's values ---
+
+    # Option A: valuesInline (for smaller, embedded overrides)
+    valuesInline:
+      namespaceName: team-a-namespace
+      teamName: team-a
+      resourceLimits:
+        pods: "50"
+        memory: "8Gi"
+        cpu: "4" # Example: A value not in the default chart values.yaml
+
+# Option B: valuesFile (for larger sets of overrides in a separate file)
+# If you choose this, ensure 'helm-values.yaml' is in the same directory as this kustomization.yaml
+# valuesFile: helm-values.yaml

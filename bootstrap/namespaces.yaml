@@ -1,21 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace-apps
-  namespace: argocd
+  name: team-a-namespace-init # A unique name for this Argo CD Application
+  namespace: argocd # The namespace where Argo CD itself is installed
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
+  project: default # Your Argo CD project (or a specific one like 'team-a-project')
   source:
-    path: namespaces
-    repoURL: https://github.com/bergtobias/homelab-infra
-    targetRevision: HEAD
-    directory:
-      recurse: false
-  sources: []
-  project: default
+    repoURL: https://github.com/your-org/your-gitops-repo.git # <--- Your GitOps repository URL
+    targetRevision: HEAD # <--- Or a specific branch/tag (e.g., 'main', 'v1.0.0')
+    path: teams/team-a # <--- Path to your team's kustomization.yaml
+    kustomize:
+      # Ensure --enable-helm is passed to Kustomize
+      # This is often configured globally in argocd-cm, but can be specified here.
+      buildOptions: "--enable-helm"
+  destination:
+    server: https://kubernetes.default.svc # The Kubernetes API server URL (usually this for in-cluster)
+    namespace: default # <--- **CRITICAL:** This MUST match the `namespace` you defined in your team's kustomization.yaml
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: # Enable automated synchronization
+      prune: true # Allow Argo CD to delete resources that are no longer in Git
+      selfHeal: true # Allow Argo CD to re-sync if it detects drift
+    syncOptions:
+      - CreateNamespace=true # Tell Argo CD to create the destination namespace if it doesn't exist
