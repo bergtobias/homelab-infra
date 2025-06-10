@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 helmCharts:
   - name: namespace-chart
-    repo: file://../../helm-charts/namespace-chart
+    repo: https://github.com/bergtobias/charts/namespace-chart
     releaseName: eggman
     valuesInline:
       namespace:
