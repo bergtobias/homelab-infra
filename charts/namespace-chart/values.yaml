@@ -1,0 +1,17 @@
+namespace:
+  name: ""
+  labels:
+    app-id: ""
+  annotations: {}
+resourceQuota:
+  name: usage-quota
+  hard:
+    requests.cpu: "4"
+    requests.memory: 8Gi
+    limits.cpu: "8"
+    limits.memory: 16Gi
+apps:
+  - name: ""
+    repoURL: ""
+    path: ""
+    targetRevision: main

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: namespace-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/bergtobias/homelab-infra
+    targetRevision: HEAD
+    path: helm-charts/namespace-chart
+    helm:
+      values: |
+        namespace:
+          name: dev
+          labels:
+            environment: dev
+            team: devops
+        apps:
+          - name: eggman
+            repo: https://github.com/bergtobias/homelab-infra
+            path: apps/eggman
+            targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

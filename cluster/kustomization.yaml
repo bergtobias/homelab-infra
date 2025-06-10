@@ -1,0 +1,7 @@
+resources:
+  - cert-manager
+  - gateway-api
+  - grafana
+  - argocd
+  - prometheus
+  - vault
