@@ -17,6 +17,7 @@ spec:
         prometheus.io/port: "3000" # Change to 3000 if metrics are exposed on port 3000
       labels:
         app: eggman
+        backstage.io/kubernetes-id: eggman
     spec:
       containers:
         - name: eggman
