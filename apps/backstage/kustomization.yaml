@@ -1,7 +1,8 @@
 resources:
   - deployment.yaml
   - service.yaml
-  - gatewayroute.yaml
+  - httproute.yaml
+  - clusterrolebinding.yaml
 images:
   - name: ghcr.io/vercevo/backstage
     newTag: latest
