@@ -34,6 +34,8 @@ spec:
               value: production
             - name: APP_CONFIG_app_baseUrl
               value: https://backstage.bergtobias.com
+            - name: APP_CONFIG_backend_baseUrl
+              value: https://backstage.bergtobias.com
           envFrom:
             - secretRef:
                 name: backstage
