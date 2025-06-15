@@ -2,3 +2,6 @@ app:
   baseUrl: https://backstage.bergtobias.com
 ingress:
   enabled: false # <- you're using Gateway API, not Ingress
+backstage:
+  repository: vercevo/backstage
+  tag: latest
