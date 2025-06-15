@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: runner
-      resources:
-        limits:
-          cpu: "2" # 2 CPUs
-          memory: "4Gi" # 4 GiB RAM (note the 'Gi', not 'gb')
-        requests:
-          cpu: "500m" # request 0.5 CPU (optional, but recommended)
-          memory: "1Gi" # request 1 GiB RAM (optional)
+          resources:
+            limits:
+              cpu: "2" # 2 CPUs
+              memory: "4Gi" # 4 GiB RAM (note the 'Gi', not 'gb')
+            requests:
+              cpu: "500m" # request 0.5 CPU (optional, but recommended)
+              memory: "1Gi" # request 1 GiB RAM (optional)
           image: ghcr.io/actions/runner:latest
           env:
             - name: RUNNER_TOKEN
