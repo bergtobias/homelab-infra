@@ -4,7 +4,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 ---
 kind: Service
 apiVersion: v1
@@ -12,7 +11,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 spec:
   ports:
     - port: 80
@@ -29,7 +27,6 @@ metadata:
 spec:
   parentRefs:
     - name: gateway # Must match the Gateway name
-      namespace: istio-system # Must match the Gateway namespace
   hostnames:
     - "k8s.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
   rules:
@@ -43,7 +40,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-certs
-  namespace: kubernetes-dashboard
 type: Opaque
 ---
 apiVersion: v1
@@ -52,7 +48,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-csrf
-  namespace: kubernetes-dashboard
 type: Opaque
 data:
   csrf: ""
@@ -63,7 +58,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-key-holder
-  namespace: kubernetes-dashboard
 type: Opaque
 ---
 kind: ConfigMap
@@ -72,7 +66,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-settings
-  namespace: kubernetes-dashboard
 ---
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
@@ -80,7 +73,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 rules:
   # Allow Dashboard to get, update and delete Dashboard exclusive secrets.
   - apiGroups: [""]
@@ -120,7 +112,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -128,7 +119,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kubernetes-dashboard
-    namespace: kubernetes-dashboard
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -141,7 +131,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kubernetes-dashboard
-    namespace: kubernetes-dashboard
 ---
 kind: Deployment
 apiVersion: apps/v1
@@ -149,7 +138,6 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -216,7 +204,6 @@ metadata:
   labels:
     k8s-app: dashboard-metrics-scraper
   name: dashboard-metrics-scraper
-  namespace: kubernetes-dashboard
 spec:
   ports:
     - port: 8000
@@ -230,7 +217,6 @@ metadata:
   labels:
     k8s-app: dashboard-metrics-scraper
   name: dashboard-metrics-scraper
-  namespace: kubernetes-dashboard
 spec:
   replicas: 1
   revisionHistoryLimit: 10
