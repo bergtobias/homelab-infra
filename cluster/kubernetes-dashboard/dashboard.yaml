@@ -41,6 +41,8 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard
   namespace: kubernetes-dashboard
 labels:
