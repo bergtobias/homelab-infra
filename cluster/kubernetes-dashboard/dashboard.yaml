@@ -296,5 +296,5 @@ spec:
             type: PathPrefix
             value: / # Route all traffic
       backendRefs:
-        - name: promstack-grafana
+        - name: kubernetes-dashboard
           port: 443 # Service port
