@@ -6,8 +6,8 @@ metadata:
 spec:
   gatewayClassName: istio
   listeners:
-    - name: https
-      protocol: HTTPS
+    - name: tls
+      protocol: TLS # ❗ Must be TLS for passthrough
       port: 443
       hostname: "*.bergtobias.com"
       allowedRoutes:
