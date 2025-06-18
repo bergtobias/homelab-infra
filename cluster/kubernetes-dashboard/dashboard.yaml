@@ -297,5 +297,5 @@ spec:
             value: / # Route all traffic
       backendRefs:
         - name: kubernetes-dashboard
-          port: 80 # Service port
+          port: 443 # Service port
           namespace: kubernetes-dashboard
