@@ -21,6 +21,7 @@ spec:
     spec:
       containers:
         - name: quiz
+          imagePullPolicy: Always
           image: ghcr.io/bergtobias/quiz:latest
           ports:
             - containerPort: 3000 # No change here if the app serves on port 3000
