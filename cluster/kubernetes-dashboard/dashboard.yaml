@@ -54,6 +54,7 @@ spec:
   rules:
     - backendRefs:
         - name: kubernetes-dashboard # The Service receiving traffic
+          namespace: kubernetes-dashboard
           port: 443
 ---
 apiVersion: v1
