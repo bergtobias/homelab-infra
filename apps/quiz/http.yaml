@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: quiz
+  labels:
+    backstage.io/kubernetes-id: quiz
+spec:
+  parentRefs:
+    - name: gateway # Must match the Gateway name
+      namespace: istio-system # Must match the Gateway namespace
+  hostnames:
+    - "quiz.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+  rules:
+    - backendRefs:
+        - name: quiz-svc # The Service receiving traffic
+          port: 80

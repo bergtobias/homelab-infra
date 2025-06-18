@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiz
+  labels:
+    backstage.io/kubernetes-id: quiz
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quiz
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "3000" # Change to 3000 if metrics are exposed on port 3000
+      labels:
+        app: quiz
+        backstage.io/kubernetes-id: quiz
+    spec:
+      containers:
+        - name: quiz
+          image: ghcr.io/bergtobias/quiz:ba1c807
+          ports:
+            - containerPort: 3000 # No change here if the app serves on port 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          envFrom:
+            - secretRef:
+                name: quiz-secret
