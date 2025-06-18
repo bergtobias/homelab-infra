@@ -286,10 +286,10 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   parentRefs:
-    - name: gateway # Must match the Gateway name
+    - name: dashboard-gateway # Must match the Gateway name
       namespace: istio-system # Must match the Gateway namespace
   hostnames:
-    - k8s.bergtobias.com # Change to your desired domain
+    - dashboard.bergtobias.com # Change to your desired domain
   rules:
     - matches:
         - path:
