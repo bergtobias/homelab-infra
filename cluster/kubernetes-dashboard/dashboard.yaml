@@ -27,6 +27,7 @@ metadata:
 spec:
   parentRefs:
     - name: gateway # Must match the Gateway name
+      namespace: istio-system
   hostnames:
     - "k8s.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
   rules:
