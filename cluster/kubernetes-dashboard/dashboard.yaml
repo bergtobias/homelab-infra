@@ -18,22 +18,24 @@ spec:
   selector:
     k8s-app: kubernetes-dashboard
 ---
-apiVersion: gateway.networking.k8s.io/v1
+apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 metadata:
   name: kubernetes-dashboard
-  labels:
-    backstage.io/kubernetes-id: kubernetes-dashboard
 spec:
   parentRefs:
     - name: gateway # Must match the Gateway name
-      namespace: istio-system
+      namespace: istio-system # Must match the Gateway namespace
   hostnames:
-    - "k8s.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+    - k8s.bergtobias.com # Change to your desired domain
   rules:
-    - backendRefs:
-        - name: kubernetes-dashboard # The Service receiving traffic
-          port: 80
+    - matches:
+        - path:
+            type: PathPrefix
+            value: / # Route all traffic
+      backendRefs:
+        - name: kubernetes-dashboard
+          port: 80 # Service port
 ---
 apiVersion: v1
 kind: Secret
