@@ -34,7 +34,7 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   ports:
-    - port: 80
+    - port: 443
       targetPort: 8443
   selector:
     k8s-app: kubernetes-dashboard
@@ -289,7 +289,7 @@ spec:
     - name: gateway # Must match the Gateway name
       namespace: istio-system # Must match the Gateway namespace
   hostnames:
-    - grafana.bergtobias.com # Change to your desired domain
+    - k8s.bergtobias.com # Change to your desired domain
   rules:
     - matches:
         - path:
@@ -297,5 +297,5 @@ spec:
             value: / # Route all traffic
       backendRefs:
         - name: kubernetes-dashboard
-          port: 80 # Service port
+          port: 443 # Service port
           namespace: kubernetes-dashboard
