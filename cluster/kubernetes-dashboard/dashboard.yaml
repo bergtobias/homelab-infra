@@ -34,14 +34,27 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   ports:
-    - name: https
-      port: 443
+    - port: 443
       targetPort: 8443
-    - name: http
-      port: 80
-      targetPort: 9090
   selector:
     k8s-app: kubernetes-dashboard
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: kubernetes-dashboard
+  labels:
+    backstage.io/kubernetes-id: kubernetes-dashboard
+spec:
+  parentRefs:
+    - name: gateway # Must match the Gateway name
+      namespace: istio-system # Must match the Gateway namespace
+  hostnames:
+    - "k8s.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+  rules:
+    - backendRefs:
+        - name: kubernetes-dashboard # The Service receiving traffic
+          port: 443
 ---
 apiVersion: v1
 kind: Secret
@@ -140,7 +153,6 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: kubernetes-dashboard
-  namespace: kubernetes-dashboard
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -168,21 +180,19 @@ spec:
       labels:
         k8s-app: kubernetes-dashboard
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: kubernetes-dashboard
-          image: kubernetesui/dashboard:v2.2.0
+          image: kubernetesui/dashboard:v2.7.0
           imagePullPolicy: Always
           ports:
             - containerPort: 8443
               protocol: TCP
-            - containerPort: 9090
-              protocol: TCP
           args:
-            #- --auto-generate-certificates
+            - --auto-generate-certificates
             - --namespace=kubernetes-dashboard
-            - --enable-skip-login
-            - --disable-settings-authorizer
-            - --enable-insecure-login
             # Uncomment the following line to manually specify Kubernetes API server Host
             # If not specified, Dashboard will attempt to auto discover the API server and connect
             # to it. Uncomment only if the default does not work.
@@ -195,9 +205,9 @@ spec:
               name: tmp-volume
           livenessProbe:
             httpGet:
-              scheme: HTTP
+              scheme: HTTPS
               path: /
-              port: 9090
+              port: 8443
             initialDelaySeconds: 30
             timeoutSeconds: 30
           securityContext:
@@ -233,23 +243,6 @@ spec:
   selector:
     k8s-app: dashboard-metrics-scraper
 ---
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
-metadata:
-  name: dashboard-http
-  namespace: kubernetes-dashboard
-spec:
-  parentRefs:
-    - name: gateway
-      namespace: default
-  hostnames:
-    - "dashboard.localhost"
-  rules:
-    - backendRefs:
-        - name: kubernetes-dashboard
-          namespace: kubernetes-dashboard
-          port: 80
----
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -267,12 +260,13 @@ spec:
     metadata:
       labels:
         k8s-app: dashboard-metrics-scraper
-      annotations:
-        seccomp.security.alpha.kubernetes.io/pod: "runtime/default"
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: dashboard-metrics-scraper
-          image: kubernetesui/metrics-scraper:v1.0.6
+          image: kubernetesui/metrics-scraper:v1.0.8
           ports:
             - containerPort: 8000
               protocol: TCP
