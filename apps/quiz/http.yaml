@@ -14,3 +14,15 @@ spec:
     - backendRefs:
         - name: quiz # The Service receiving traffic
           port: 80
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+      filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            add:
+              - name: "connection"
+                value: "upgrade"
+              - name: "upgrade"
+                value: "websocket"
