@@ -1,5 +1,2 @@
 resources:
-  - deployment.yaml
-  - http.yaml
-  - service.yaml
-  - configmap.yaml
+  - manifest.yaml
