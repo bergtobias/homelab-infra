@@ -113,4 +113,4 @@ metadata:
   name: quiz
 data:
   HOST: https://quiz.bergtobias.com
-  NEXT_PUBLIC_HOST: https://quiz.bergtobias.com
+  NEXT_PUBLIC_BACKEND_URL: https://quiz.bergtobias.com
