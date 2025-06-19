@@ -20,9 +20,21 @@ spec:
         backstage.io/kubernetes-id: quiz
     spec:
       containers:
-        - name: quiz
+        - name: quiz-backend
           imagePullPolicy: Always
-          image: ghcr.io/bergtobias/quiz:latest
+          image: ghcr.io/bergtobias/quiz-backend:latest
+          ports:
+            - containerPort: 3001 # No change here if the app serves on port 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+        - name: quiz-frontend
+          imagePullPolicy: Always
+          image: ghcr.io/bergtobias/quiz-frontend:latest
           ports:
             - containerPort: 3000 # No change here if the app serves on port 3000
           resources:
