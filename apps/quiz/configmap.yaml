@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quiz
+data:
+  HOST: https://quiz.bergtobias.com
+  NEXT_PUBLIC_HOST: https://quiz.bergtobias.com
