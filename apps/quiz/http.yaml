@@ -6,18 +6,18 @@ metadata:
     backstage.io/kubernetes-id: quiz
 spec:
   parentRefs:
-    - name: gateway # Must match the Gateway name
-      namespace: istio-system # Must match the Gateway namespace
+    - name: gateway
+      namespace: istio-system
   hostnames:
-    - "quiz.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+    - "quiz.bergtobias.com"
   rules:
-    - backendRefs:
-        - name: quiz # The Service receiving traffic
-          port: 80
-      matches:
+    - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /socket.io
+      backendRefs:
+        - name: quiz
+          port: 80
       filters:
         - type: RequestHeaderModifier
           requestHeaderModifier:
@@ -26,3 +26,10 @@ spec:
                 value: "upgrade"
               - name: "upgrade"
                 value: "websocket"
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: quiz
+          port: 80
