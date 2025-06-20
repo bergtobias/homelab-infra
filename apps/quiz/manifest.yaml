@@ -46,14 +46,6 @@ spec:
       backendRefs:
         - name: quiz-backend
           port: 3001
-      filters:
-        - type: RequestHeaderModifier
-          requestHeaderModifier:
-            add:
-              - name: "connection"
-                value: "upgrade"
-              - name: "upgrade"
-                value: "websocket"
     - matches:
         - path:
             type: PathPrefix
