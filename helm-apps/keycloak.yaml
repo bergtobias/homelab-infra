@@ -5,13 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: keycloak
-    targetRevision: 24.4.9
-    helm:
-      valueFiles:
-        - $helm-apps/keycloak-values.yaml
+  sourcees:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: keycloak
+      targetRevision: 24.4.9
+      helm:
+        valueFiles:
+          - $values/helm-apps/keycloak-values.yaml
+    - repoURL: https://github.com/bergtobias/infra-lab
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
