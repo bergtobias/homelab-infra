@@ -16,8 +16,7 @@ spec:
           existingSecretUsernameKey: admin-user
           existingSecretPasswordKey: admin-password
         ingress:
-          enabled: true
-          hostname: keycloak.bergtobias.com
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
