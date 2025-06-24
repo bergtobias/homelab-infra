@@ -3,6 +3,8 @@ extraEnvVars:
     value: "https://keycloak.bergtobias.com"
   - name: PROXY_ADDRESS_FORWARDING
     value: "true"
+  - name: KC_SPI_CONTENT_SECURITY_POLICY_ENABLED
+    value: "false"
 ingress:
   enabled: false
 postgresql:
