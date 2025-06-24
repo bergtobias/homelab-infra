@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://charts.bitnami.com/bitnami
+    - repoURL: https://helm.releases.hashicorp.com
       chart: vault
       targetRevision: 0.30.0
       helm:
