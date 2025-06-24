@@ -8,31 +8,16 @@ spec:
     namespace: vault
     server: https://kubernetes.default.svc
   project: default
-  source:
-    chart: vault
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 0.30.0 # Use latest version if needed
-    helm:
-      values: |
-        global:
-          storageClass: "standard"
-
-        server:
-          enabled: true
-          dev:
-            enabled: true
-            extraArgs:
-              - "-dev-root-token-id=root"
-          ingress:
-            enabled: false
-          dataStorage:
-            enabled: false  # ephemeral
-
-        ui:
-          enabled: true
-
-        service:
-          type: ClusterIP
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: vault
+      targetRevision: 0.30.0
+      helm:
+        valueFiles:
+          - $values/helm-apps/vault-values.yaml
+    - repoURL: https://github.com/bergtobias/homelab-infra
+      targetRevision: main
+      ref: values
   syncPolicy:
     automated:
       selfHeal: true
