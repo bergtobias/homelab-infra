@@ -132,10 +132,9 @@ image:
 ## ref: https://github.com/bitnami/containers/tree/main/bitnami/keycloak#admin-credentials
 ##
 auth:
-  adminUser: user # Optional if 'admin-user' is also in the secret
-  existingSecret: keycloak-secret
-  passwordSecretKey: admin-password
-  annotations: {}
+  existingSecret: keycloak
+  usernameKey: admin-user
+  passwordKey: admin-password
 ## Custom Certificates
 ## @param customCaExistingSecret Name of the secret containing the Keycloak custom CA certificates. The secret will be mounted as a directory and configured using KC_TRUSTSTORE_PATHS.
 ## https://www.keycloak.org/server/keycloak-truststore
@@ -1334,7 +1333,7 @@ postgresql:
   auth:
     username: bn_keycloak
     database: bitnami_keycloak
-    existingSecret: keycloak-postgresql
+    existingSecret: keycloak
     secretKeys:
       userPasswordKey: password
       postgresPasswordKey: postgres-password
