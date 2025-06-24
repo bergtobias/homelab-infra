@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sourcees:
+  sources:
     - repoURL: https://charts.bitnami.com/bitnami
       chart: keycloak
       targetRevision: 24.4.9
