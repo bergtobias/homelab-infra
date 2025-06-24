@@ -17,6 +17,11 @@ spec:
           existingSecretPasswordKey: admin-password
         ingress:
           enabled: false
+        extraEnvVars:
+          - name: PROXY_ADDRESS_FORWARDING
+            value: "true"
+          - name: KEYCLOAK_FRONTEND_URL
+            value: "https://keycloak.bergtobias.com"
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
