@@ -1,7 +1,3 @@
-auth:
-  existingSecret: keycloak
-  usernameKey: admin-user
-  passwordKey: admin-password
 extraEnvVars:
   - name: KEYCLOAK_FRONTEND_URL
     value: "https://keycloak.bergtobias.com"
@@ -11,9 +7,15 @@ ingress:
   enabled: false
 postgresql:
   enabled: true
-  architecture: standalone
   auth:
     existingSecret: keycloak
-    usernameKey: postgresql-username
-    passwordKey: postgresql-password
-    databaseKey: postgresql-database
+    secretKeys:
+      userPasswordKey: password # for bn_keycloak user password
+      postgresPasswordKey: postgres-password # for postgres superuser password
+    username: bn_keycloak
+    database: bitnami_keycloak
+  architecture: standalone
+auth:
+  existingSecret: keycloak
+  usernameKey: admin-user
+  passwordKey: admin-password
