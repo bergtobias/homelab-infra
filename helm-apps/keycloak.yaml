@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values/helm-apps/keycloak-values.yaml
-    - repoURL: https://github.com/bergtobias/infra-lab
+    - repoURL: https://github.com/bergtobias/homelab-infra
       targetRevision: main
       ref: values
   destination:
