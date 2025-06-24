@@ -9,18 +9,6 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     chart: keycloak
     targetRevision: 21.1.1
-    helm:
-      values: |
-        auth:
-          existingSecret: keycloak-secret
-          existingSecretPasswordKey: admin-password
-        ingress:
-          enabled: false
-        extraEnvVars:
-          - name: PROXY_ADDRESS_FORWARDING
-            value: "true"
-          - name: KEYCLOAK_FRONTEND_URL
-            value: "https://keycloak.bergtobias.com"
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
