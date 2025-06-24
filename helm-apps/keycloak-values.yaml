@@ -11,6 +11,16 @@ extraEnvVars:
     value: "xforwarded"
   - name: KC_HTTP_ENABLED
     value: "true"
+  - name: KEYCLOAK_ADMIN
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-admin-secret
+        key: admin-user
+  - name: KEYCLOAK_ADMIN_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: keycloak-admin-secret
+        key: admin-password
 ingress:
   enabled: false
 postgresql:
