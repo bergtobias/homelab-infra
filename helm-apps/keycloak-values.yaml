@@ -132,20 +132,9 @@ image:
 ## ref: https://github.com/bitnami/containers/tree/main/bitnami/keycloak#admin-credentials
 ##
 auth:
-  ## @param auth.adminUser Keycloak administrator user
-  ##
-  adminUser: user
-  ## @param auth.adminPassword Keycloak administrator password for the new user
-  ##
-  adminPassword: ""
-  ## @param auth.existingSecret Existing secret containing Keycloak admin password
-  ##
-  existingSecret: ""
-  ## @param auth.passwordSecretKey Key where the Keycloak admin password is being stored inside the existing secret.
-  ##
-  passwordSecretKey: ""
-  ## @param auth.annotations Additional custom annotations for Keycloak auth secret object
-  ##
+  adminUser: user # Optional if 'admin-user' is also in the secret
+  existingSecret: keycloak-secret
+  passwordSecretKey: admin-password
   annotations: {}
 ## Custom Certificates
 ## @param customCaExistingSecret Name of the secret containing the Keycloak custom CA certificates. The secret will be mounted as a directory and configured using KC_TRUSTSTORE_PATHS.
@@ -1341,15 +1330,14 @@ keycloakConfigCli:
 ##
 postgresql:
   enabled: true
+  architecture: standalone
   auth:
-    postgresPassword: ""
     username: bn_keycloak
-    password: "YOUR_PASSWORD_HERE"
     database: bitnami_keycloak
-    existingSecret: ""
+    existingSecret: keycloak-postgresql
     secretKeys:
       userPasswordKey: password
-  architecture: standalone
+      postgresPasswordKey: postgres-password
 ## External PostgreSQL configuration
 ## All of these values are only used when postgresql.enabled is set to false
 ## @param externalDatabase.host Database host
