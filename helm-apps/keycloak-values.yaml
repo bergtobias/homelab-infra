@@ -284,7 +284,11 @@ args: []
 ##   - name: FOO
 ##     value: "bar"
 ##
-extraEnvVars: []
+extraEnvVars:
+  - name: KEYCLOAK_FRONTEND_URL
+    value: "https://keycloak.bergtobias.com"
+  - name: PROXY_ADDRESS_FORWARDING
+    value: "true"
 ## @param extraEnvVarsCM Name of existing ConfigMap containing extra env vars
 ##
 extraEnvVarsCM: ""

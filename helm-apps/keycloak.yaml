@@ -9,6 +9,9 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     chart: keycloak
     targetRevision: 24.4.9
+    helm:
+      valueFiles:
+        - $helm-apps/keycloak-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: keycloak
