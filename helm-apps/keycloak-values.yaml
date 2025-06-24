@@ -5,6 +5,12 @@ extraEnvVars:
     value: "true"
   - name: KC_SPI_CONTENT_SECURITY_POLICY_ENABLED
     value: "false"
+  - name: KC_HOSTNAME
+    value: "keycloak.bergtobias.com"
+  - name: KC_PROXY_HEADERS
+    value: "xforwarded"
+  - name: KC_HTTP_ENABLED
+    value: "true"
 ingress:
   enabled: false
 postgresql:
