@@ -13,7 +13,6 @@ spec:
       values: |
         auth:
           existingSecret: keycloak-secret
-          existingSecretUsernameKey: admin-user
           existingSecretPasswordKey: admin-password
         ingress:
           enabled: false
