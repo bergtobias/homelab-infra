@@ -11,10 +11,17 @@ spec:
     - name: busybox
       image: busybox
       command: ["sleep", "3600"]
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "200m"
+          memory: "256Mi"
       volumeMounts:
         - name: vault-secrets
-          mountPath: /vault/secrets
+          mountPath: /vault/secretss
           readOnly: true
   volumes:
-    - name: vault-secrets
+    - name: vault-secretsss
       emptyDir: {}
