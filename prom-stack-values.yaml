@@ -6,11 +6,6 @@ grafana:
     port: 80
   ingress:
     enabled: false # we’re not using Ingress
-  grafana.ini:
-    server:
-      root_url: "https://grafana.bergtobias.com/"
-      serve_from_sub_path: true
-  # Optional: Set admin password
   adminPassword: admin
 prometheus:
   service:
