@@ -24,3 +24,22 @@ spec:
       prune: true
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: promstack
+spec:
+  parentRefs:
+    - name: gateway # Must match the Gateway name
+      namespace: istio-system # Must match the Gateway namespace
+  hostnames:
+    - grafana.bergtobias.com # Change to your desired domain
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: / # Route all traffic
+      backendRefs:
+        - name: promstack-grafana
+          port: 80 # Service port
