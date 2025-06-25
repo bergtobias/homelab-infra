@@ -1,0 +1,7 @@
+resources:
+  - deployment.yaml
+  - http.yaml
+  - service.yaml
+images:
+  - name: ghcr.io/bergtobias/bergtobias
+    newTag: 16c7d99
