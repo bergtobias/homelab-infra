@@ -1064,8 +1064,9 @@ csi:
     # This should be a YAML map of the labels to apply to the csi provider pod
     extraLabels: {}
   agent:
+    extraArgs:
+      - "-address=http://vault.vault.svc:8200"
     enabled: true
-    extraArgs: []
     image:
       repository: "hashicorp/vault"
       tag: "1.19.0"
