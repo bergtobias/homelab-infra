@@ -14,7 +14,7 @@ spec:
       annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "k8s-role"
-        vault.hashicorp.com/agent-inject-secret-mysecret.txt: "secret/data/kv/secret"
+        vault.hashicorp.com/agent-inject-secret-test: "secret/data/kv/secret"
     spec:
       containers:
         - name: busybox
@@ -28,9 +28,9 @@ spec:
               cpu: "200m"
               memory: "256Mi"
           volumeMounts:
-            - name: vault-secretsss
+            - name: vault-secrets
               mountPath: /vault/secretss
               readOnly: true
       volumes:
-        - name: vault-secretsss
+        - name: vault-secrets
           emptyDir: {}
