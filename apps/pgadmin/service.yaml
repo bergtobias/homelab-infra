@@ -6,6 +6,6 @@ spec:
   selector:
     app: pgadmin
   ports:
-    - port: 5432
+    - port: 80
       targetPort: 5432
   type: ClusterIP
