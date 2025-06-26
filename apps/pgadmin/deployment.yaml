@@ -27,3 +27,5 @@ spec:
           envFrom:
             - secretRef:
                 name: pgadmin
+            - configMapRef:
+                name: pgadmin
