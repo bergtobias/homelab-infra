@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pgadmin
+  labels:
+    backstage.io/kubernetes-id: pgadmin
+spec:
+  parentRefs:
+    - name: gateway # Must match the Gateway name
+      namespace: istio-system # Must match the Gateway namespace
+  hostnames:
+    - "pgadmin.bergtobias.com" # Must be consistent with your Gateway’s hostname(s) if you set any
+  rules:
+    - backendRefs:
+        - name: pgadmin # The Service receiving traffic
+          port: 80
