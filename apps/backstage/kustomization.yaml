@@ -3,6 +3,7 @@ resources:
   - service.yaml
   - httproute.yaml
   - clusterrolebinding.yaml
+  - secrets.yaml
 images:
   - name: ghcr.io/vercevo/backstage
     newTag: latest
