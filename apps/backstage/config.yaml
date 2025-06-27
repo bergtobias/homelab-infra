@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: backstage-config
+  name: backstage
 data:
   APP_BASE_URL: https://backstage.bergtobias.com
   BACKEND_BASE_URL: https://backstage.bergtobias.com
