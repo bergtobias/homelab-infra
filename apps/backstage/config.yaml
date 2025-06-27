@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: backstage
 data:
-  APP_BASE_URL: https://backstage.bergtobias.com
-  BACKEND_BASE_URL: https://backstage.bergtobias.com
+  APP_BASEURL: https://backstage.bergtobias.com
+  BACKEND_BASEURL: https://backstage.bergtobias.com
   K8_URL: https://kubernetes.default.svc.cluster.local
   APP_URL: https://backstage.bergtobias.com
   BACKEND_URL: https://backstage.bergtobias.com
