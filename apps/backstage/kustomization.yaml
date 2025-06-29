@@ -2,7 +2,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - httproute.yaml
-  - clusterrolebinding.yaml
   - secrets.yaml
   - config.yaml
   - rbac/
