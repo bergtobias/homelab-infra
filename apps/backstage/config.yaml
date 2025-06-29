@@ -5,3 +5,4 @@ metadata:
 data:
   K8_URL: https://kubernetes.default.svc.cluster.local
   APP_URL: https://backstage.bergtobias.com
+  NODE_OPTIONS: --no-node-snapshot
