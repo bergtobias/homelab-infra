@@ -5,7 +5,6 @@ resources:
   - secrets.yaml
   - config.yaml
   - rbac/serviceaccount.yaml
-  - rbac/clusterrole.yaml
   - rbac/clusterrolebinding.yaml
   - rbac/serviceaccount-token.yaml
 images:
