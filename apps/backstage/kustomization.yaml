@@ -5,6 +5,7 @@ resources:
   - clusterrolebinding.yaml
   - secrets.yaml
   - config.yaml
+  - rbac/
 images:
   - name: ghcr.io/vercevo/backstage
     newTag: latest

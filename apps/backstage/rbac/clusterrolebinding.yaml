@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: backstage-observer-clusterrolebinding
+  name: backstage
 subjects:
   - kind: ServiceAccount
-    name: backstage-observer
+    name: backstage
     namespace: default
 roleRef:
   kind: ClusterRole
-  name: cluster-admin # or a more limited role if you prefer
+  name: backstage
   apiGroup: rbac.authorization.k8s.io
