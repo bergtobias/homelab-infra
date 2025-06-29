@@ -7,6 +7,7 @@ resources:
   - rbac/serviceaccount.yaml
   - rbac/clusterrole.yaml
   - rbac/clusterrolebinding.yaml
+  - rbac/serviceaccount-token.yaml
 images:
   - name: ghcr.io/vercevo/backstage
     newTag: latest
