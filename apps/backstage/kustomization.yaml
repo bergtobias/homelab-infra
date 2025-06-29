@@ -4,7 +4,9 @@ resources:
   - httproute.yaml
   - secrets.yaml
   - config.yaml
-  - rbac/
+  - rbac/serviceaccount.yaml
+  - rbac/clusterrole.yaml
+  - rbac/clusterrolebinding.yaml
 images:
   - name: ghcr.io/vercevo/backstage
     newTag: latest
