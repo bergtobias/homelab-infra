@@ -5,8 +5,8 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: backstage
-    namespace: default
+    namespace: backstage
 roleRef:
   kind: ClusterRole
-  name: backstage
+  name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
